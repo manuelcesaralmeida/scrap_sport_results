@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Simulação Central Córdoba vs San Lorenzo</title>
+</head>
+<body>
+<h2>Simulação de 10.000 jogos</h2>
+<pre id="result"></pre>
+
+<script>
+const simulations = 10000;
+
+// Probabilidades aproximadas com base em forma e histórico
+const prob = {
+  centralWin: 0.30,   // Central Córdoba vence ~30%
+  draw: 0.25,         // Empate ~25%
+  sanLorenzoWin: 0.45 // San Lorenzo vence ~45%
+};
+
+// Golos médios por jogo
+const avgGoals = {
+  central: 1.0,
+  sanLorenzo: 1.5
+};
+
+// Escanteios médios
+const avgCorners = {
+  total: 8.78
+};
+
+// Função para simular um jogo
+function simulateGame() {
+  // Resultado
+  const rnd = Math.random();
+  let result;
+  if (rnd < prob.centralWin) result = "Central";
+  else if (rnd < prob.centralWin + prob.draw) result = "Draw";
+  else result = "San Lorenzo";
+
+  // Goles (aproximação Poisson)
+  const goalsCentral = Math.floor(Math.random() * (avgGoals.central + 2)); // 0 a 2 golos
+  const goalsSan = Math.floor(Math.random() * (avgGoals.sanLorenzo + 2));   // 0 a 3 golos
+
+  // Escanteios
+  const corners = Math.round(avgCorners + (Math.random()*2-1)); // +/- 1
+
+  return { result, goalsCentral, goalsSan, corners };
+}
+
+// Simular jogos
+let counts = { Central: 0, Draw: 0, SanLorenzo: 0 };
+let totalGoals = 0;
+let totalCorners = 0;
+for (let i = 0; i < simulations; i++) {
+  const game = simulateGame();
+  counts[game.result]++;
+  totalGoals += game.goalsCentral + game.goalsSan;
+  totalCorners += game.corners;
+}
+
+// Percentagens
+const percent = {
+  Central: (counts.Central / simulations * 100).toFixed(1) + '%',
+  Draw: (counts.Draw / simulations * 100).toFixed(1) + '%',
+  SanLorenzo: (counts.SanLorenzo / simulations * 100).toFixed(1) + '%'
+};
+
+const avgGoalsTotal = (totalGoals / simulations).toFixed(2);
+const avgCornersTotal = (totalCorners / simulations).toFixed(1);
+
+document.getElementById('result').textContent = `
+Probabilidade aproximada:
+- Vitória Central Córdoba: ${percent.Central}
+- Empate: ${percent.Draw}
+- Vitória San Lorenzo: ${percent.SanLorenzo}
+
+Média de golos por jogo: ${avgGoalsTotal}
+Média de escanteios por jogo: ${avgCornersTotal}
+`;
+</script>
+</body>
+</html>

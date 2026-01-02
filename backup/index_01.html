@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Node.js Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--title>Dropdown Example</title-->
+    <style>
+        .dropdown-container {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            font-size: 14px;
+        }
+
+        label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>✅ Server is Working!</h1>
+    <p>If you can see this, your server is running correctly.</p>
+
+    <div class="form-group">
+        <label for="country">Select Country:</label>
+        <select id="country">
+            <option value="">-- Choose a country --</option>
+            <option value="australia">Australia</option>
+            <option value="brazil">Brazil</option>
+            <option value="germany">Germany</option>
+            <option value="japan">Japan</option>
+            <option value="usa">United States</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="team">Select Team:</label>
+        <select id="team">
+            <option value="">-- First select a country --</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="number_games">Number of Games : </label>
+        <select id="number_games">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+    </div>
+
+
+    <div class="result">
+        <h3>Your Selection:</h3>
+        <p>Country: <span id="selected-country" class="highlight">Not selected</span></p>
+        <p>Team: <span id="selected-team" class="highlight">Not selected</span></p>
+    </div>
+
+    <div class="instructions">
+        <p><strong>How to use:</strong> First select a country from the dropdown. Then choose a team from the second
+            dropdown that corresponds to your selected country.</p>
+    </div>
+
+    <button
+        onclick="runCommand('cd ~/ces/bets/cypress-bets/cypress/support/ && node flashcore.js \'Flamengo\' Soccer Brazil 2')">TESTE......</button>
+
+
+    <button id="run-command-btn" onclick="runSelectedCommand()">Run Command with Selected Values</button>
+
+
+    <!-- <button onclick="runCommand('echo Hello World')">TESTE......</button> -->
+
+    <div id="output" style="background: #f0f0f0; padding: 10px; margin: 10px 0;"></div>
+
+    <script>
+        async function testServer() {
+            try {
+                const response = await fetch('/test');
+                const data = await response.json();
+                document.getElementById('output').innerHTML = 'Server response: ' + data.message;
+            } catch (error) {
+                document.getElementById('output').innerHTML = 'Error: ' + error.message;
+            }
+        }
+
+        async function runCommand(command) {
+            try {
+                document.getElementById('output').innerHTML = 'Running command...' + command;
+                const response = await fetch('/run-command', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: command })
+                });
+                const result = await response.json();
+                document.getElementById('output').innerHTML = result.output;
+            } catch (error) {
+                document.getElementById('output').innerHTML = 'Error: ' + error.message;
+            }
+        }
+
+        async function runSelectedCommand() {
+            const country = countrySelect.value;
+            const team = teamSelect.options[teamSelect.selectedIndex]?.text;
+            const games = gamesSelect.value;
+
+            if (!country || !team || !games) {
+                document.getElementById('output').innerHTML = 'Error: Please select a country, team, and number of games';
+                return;
+            }
+
+            // Construct the command with selected values
+            const command = `cd ~/ces/bets/cypress-bets/cypress/support/ && node flashcore.js '${team}' Soccer '${country}' ${games}`;
+
+            // Call the existing runCommand function
+            await runCommand(command);
+        }
+
+        const originalTeams = ["Flamengo RJ", "Palmeiras", "Cruzeiro", "Mirassol", "Bahia", "Botafogo RJ", "Fluminense", "Bragantino", "Sao Paulo", "Atletico-MG", "Vasco", "Ceara", "Corinthians", "Gremio", "Internacional", "Santos", "Vitoria", "Juventude", "Fortaleza", "Sport Recife"];
+        // Team data for each country
+        const teamsData = {
+            australia: ["Sydney Swans", "Melbourne Demons", "Brisbane Lions", "Perth Wildcats", "Adelaide Crows"],
+            brazil: ["Flamengo RJ", "Palmeiras", "Cruzeiro", "Mirassol", "Bahia", "Botafogo RJ", "Fluminense", "Bragantino", "Sao Paulo", "Atletico-MG", "Vasco", "Ceara", "Corinthians", "Gremio", "Internacional", "Santos", "Vitoria", "Juventude", "Fortaleza", "Sport Recife"],
+            germany: ["Bayern Munich", "Borussia Dortmund", "RB Leipzig", "Bayer Leverkusen", "Schalke 04"],
+            japan: ["Tokyo Giants", "Osaka Tigers", "Kyoto Sanga", "Yokohama Marinos", "Nagoya Grampus"],
+            usa: ["New York Giants", "Los Angeles Lakers", "Chicago Bulls", "Miami Heat", "Boston Celtics"]
+        };
+
+        // Algorithm to sort all arrays alphabetically
+        for (let country in teamsData) {
+            teamsData[country].sort((a, b) => a.localeCompare(b));
+        }
+
+        // Get DOM elements
+        const countrySelect = document.getElementById('country');
+        const teamSelect = document.getElementById('team');
+        const selectedCountrySpan = document.getElementById('selected-country');
+        const selectedTeamSpan = document.getElementById('selected-team');
+        const gamesSelect = document.getElementById('number_games');
+
+        // Update teams dropdown when country changes
+        countrySelect.addEventListener('change', function () {
+            const selectedCountry = this.value;
+
+            // Clear previous teams
+            teamSelect.innerHTML = '';
+
+            if (selectedCountry) {
+                // Add teams for the selected country
+                const teams = teamsData[selectedCountry];
+
+                // Add default option
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "-- Select a team --";
+                teamSelect.appendChild(defaultOption);
+
+                // Add team options
+                teams.forEach(team => {
+                    const option = document.createElement('option');
+                    option.value = team.toLowerCase().replace(/\s+/g, '-');
+                    option.textContent = team;
+                    teamSelect.appendChild(option);
+                });
+
+                // Update displayed selection
+                selectedCountrySpan.textContent = countrySelect.options[countrySelect.selectedIndex].text;
+                selectedTeamSpan.textContent = "Not selected";
+            } else {
+                // Reset if no country selected
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "-- First select a country --";
+                teamSelect.appendChild(defaultOption);
+
+                selectedCountrySpan.textContent = "Not selected";
+                selectedTeamSpan.textContent = "Not selected";
+            }
+        });
+
+        // Update displayed team when team selection changes
+        teamSelect.addEventListener('change', function () {
+            if (this.value) {
+                selectedTeamSpan.textContent = this.options[this.selectedIndex].text;
+            } else {
+                selectedTeamSpan.textContent = "Not selected";
+            }
+        });
+    </script>
+</body>
+
+</html>

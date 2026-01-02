@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Node.js Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            font-size: 14px;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .result {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .statistics {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: rgb(225, 232, 22);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        .instructions {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e8f4fd;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        #output {
+            background: #f0f0f0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+            min-height: 100px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .highlight_blue {
+            color: #1d1292;
+            font-weight: bold;
+        }
+
+        .command-preview {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .button-row button {
+            flex: 1;
+            width: auto;
+        }
+
+        .custom-button {
+            background-color: #9b59b6;
+        }
+
+        .custom-button:hover {
+            background-color: #8e44ad;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>✅ Server is Working!</h1>
+    <p>If you can see this, your server is running correctly.</p>
+
+    <div class="form-group">
+        <label for="country">Select Country:</label>
+        <select id="country">
+            <option value="">-- Choose a country --</option>
+            <option value="andorra">Andorra</option>
+            <option value="argentina">Argentina</option>
+            <option value="australia">Australia</option>
+            <option value="austria">Austria</option>
+            <option value="belgium">Belgium</option>
+            <option value="brazil">Brazil</option>
+            <option value="canada">Canada</option>
+            <option value="chile">Chile</option>
+            <option value="colombia">Colombia</option>
+            <option value="costa_rica">Costa Rica</option>
+            <option value="denmark">Denmark</option>
+            <option value="ecuador">Ecuador</option>
+            <option value="england">England</option>
+            <option value="england_2">England 2</option>
+            <option value="england_3">England 3</option>
+            <option value="france">France</option>
+            <option value="france_2">France 2</option>
+            <option value="germany">Germany</option>
+            <option value="greece">Greece</option>
+            <option value="guatemala">Guatemala</option>
+            <option value="honduras">Honduras</option>
+            <option value="hungary">Hungary</option>
+            <option value="iran">Iran</option>
+            <option value="israel">Israel</option>
+            <option value="israel_2">Israel 2</option>
+            <option value="italy">Italy</option>
+            <option value="italy_2">Italy 2</option>
+            <option value="jamaica">Jamaica</option>
+            <option value="japan">Japan</option>
+            <option value="kazakhstan">Kazakhstan</option>
+            <option value="montenegro">Montenegro</option>
+            <option value="netherlands">Netherlands</option>
+            <option value="netherlands_2">Netherlands 2</option>
+            <option value="new_zealand">New Zealand</option>
+            <option value="peru">Peru</option>
+            <option value="poland">Poland</option>
+            <option value="poland_2">Poland 2</option>
+            <option value="portugal">Portugal</option>
+            <option value="portugal_2">Portugal 2</option>
+            <option value="saudi_arabia">Saudi Arabia</option>
+            <option value="scotland">Scotland</option>
+            <option value="serbia">Serbia</option>
+            <option value="south_korea">South Korea</option>
+            <option value="south_korea_2">South Korea 2</option>
+            <option value="spain">Spain</option>
+            <option value="sweden">Sweden</option>
+            <option value="switzerland">Switzerland</option>
+            <option value="switzerland_2">Switzerland 2</option>
+            <option value="turkey">Turkey</option>
+            <option value="usa">USA</option>
+            <option value="venezuela">Venezuela</option>
+            <option value="wales">Wales</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="team">Select Team:</label>
+        <select id="team">
+            <option value="">-- First select a country --</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="number_games">Number of Games:</label>
+        <select id="number_games">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+            <option value="46">46</option>
+            <option value="47">47</option>
+            <option value="48">48</option>
+            <option value="49">49</option>
+            <option value="50">50</option>
+            <option value="51">51</option>
+            <option value="52">52</option>
+            <option value="53">53</option>
+            <option value="54">54</option>
+            <option value="55">55</option>
+            <option value="56">56</option>
+            <option value="57">57</option>
+            <option value="58">58</option>
+            <option value="59">59</option>
+            <option value="60">60</option>
+            <option value="61">61</option>
+            <option value="62">62</option>
+            <option value="63">63</option>
+            <option value="64">64</option>
+            <option value="65">65</option>
+            <option value="66">66</option>
+            <option value="67">67</option>
+            <option value="68">68</option>
+            <option value="69">69</option>
+            <option value="70">70</option>
+            <option value="71">71</option>
+            <option value="72">72</option>
+            <option value="73">73</option>
+            <option value="74">74</option>
+            <option value="75">75</option>
+            <option value="76">76</option>
+            <option value="77">77</option>
+            <option value="78">78</option>
+            <option value="79">79</option>
+            <option value="80">80</option>
+            <option value="81">81</option>
+            <option value="82">82</option>
+            <option value="83">83</option>
+            <option value="84">84</option>
+            <option value="85">85</option>
+            <option value="86">86</option>
+            <option value="87">87</option>
+            <option value="88">88</option>
+            <option value="89">89</option>
+            <option value="90">90</option>
+            <option value="91">91</option>
+            <option value="92">92</option>
+            <option value="93">93</option>
+            <option value="94">94</option>
+            <option value="95">95</option>
+            <option value="96">96</option>
+            <option value="97">97</option>
+            <option value="98">98</option>
+            <option value="99">99</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+
+    <div class="result">
+        <h3>Your Selection:</h3>
+        <p>Country: <span id="selected-country" class="highlight">Not selected</span></p>
+        <p>Team: <span id="selected-team" class="highlight">Not selected</span></p>
+        <p>Number of Games: <span id="selected-games" class="highlight">1</span></p>
+    </div>
+
+    <div class="statistics">
+        <h3>Statistics :</h3>
+        <p>Teams analyzed : <span id="teams-analyzed" class="highlight_blue"></span></p>
+        <p>Games Analyzed : <span id="number-games-analyzed" class="highlight_blue"></span></p>
+        <p>Failed analyses     : <span id="failed-analyses" class="highlight_blue"></span></p>
+        <p>Media Corners Favor : <span id="media-corners-favor" class="highlight_blue"></span></p>
+        <p>Media Corners Against : <span id="media-corners-against" class="highlight_blue"></span></p>
+        <p>Media Corners : <span id="media-corners" class="highlight_blue"></span></p>
+        <button onclick="newRightButton()" class="custom-button">New Right Button</button>
+
+    </div>
+
+    <div class="command-preview">
+        Command Preview: <span id="command-preview">No command to display</span>
+    </div>
+
+    <!-- <button id="run-command-btn" onclick="runSelectedCommand()" disabled>Run Command with Selected Values</button>
+
+    <button id="run-all-teams-btn" onclick="runAllTeams()">Run All Teams from Selected Values</button>
+
+    <button id="corners-btn" onclick="mostrarIframe()">Corners</button> -->
+
+    <div class="button-row">
+        <button id="run-command-btn" onclick="runSelectedCommand()" disabled>Run Command</button>
+        <button id="run-all-teams-btn" onclick="runAllTeams()">Run All Teams</button>
+        <button id="corners-btn" onclick="mostrarIframe()">Corners</button>
+        <!-- <button onclick="newRightButton()" class="custom-button">New Right Button</button> -->
+    </div>
+
+    <div id="output">Output will appear here...</div>
+
+    <div class="instructions">
+        <p><strong>How to use:</strong> First select a country from the dropdown. Then choose a team from the second
+            dropdown that corresponds to your selected country. Finally, select the number of games and click the "Run
+            Command" button.</p>
+    </div>
+
+    <div id="iframe-container" style="display: none; margin-top: 20px;">
+        <iframe id="meu-iframe" src="" width="100%" height="400px" style="border: 1px solid #ccc;">
+        </iframe>
+    </div>
+
+    <script>
+        // Team data for each country
+        const teamsData = {
+            andorra: ["UE Santa Coloma", "Inter Escaldes", "FC Rangers", "Atletic Escaldes", "FC Santa Coloma", "Penya", "Ordino", "Carroi", "Esperanca", "Pas de la Casa"],
+            argentina: ["Boca Juniors", "Union de Santa Fe", "Racing Club", "Central Cordoba", "Argentinos Jrs", "Barracas Central", "Tigre", "Estudiantes L.P.", "Banfield", "Belgrano", "Huracan", "Defensa y Justicia", "Aldosivi", "Ind. Rivadavia", "Newells Old Boys", "Rosario Central", "Lanus", "Dep. Riestra", "Velez Sarsfield", "San Lorenzo", "River Plate", "Gimnasia L.P.", "Talleres Cordoba", "Sarmiento Junin", "San Martin S.J.", "Independiente", "Atl. Tucuman", "Instituto", "Godoy Cruz", "Platense"],
+            australia: ["Sydney FC", "Adelaide United", "Melbourne City", "Brisbane Roar", "Central Coast Mariners", "Macarthur FC", "Wellington Phoenix", "WS Wanderers", "Perth Glory", "Melbourne Victory", "Newcastle Jets"],
+            austria: ["Salzburg", "SK Rapid", "Hartberg", "LASK", "Sturm Graz", "Austria Vienna", "Wolfsberger AC", "Altach", "Ried", "Tirol", "Grazer AK", "BW Linz"],
+            belgium: ["Royale Union SG", "Club Brugge KV", "Anderlecht", "St. Truiden", "Gent", "KV Mechelen", "Genk", "Waregem", "Charleroi", "St. Liege", "RAAL La Louviere", "Westerlo", "Leuven", "Antwerp", "Cercle Brugge KSV", "Dender"],
+            brazil: ["Flamengo RJ", "Palmeiras", "Cruzeiro", "Mirassol", "Bahia", "Botafogo RJ", "Fluminense", "Bragantino", "Sao Paulo", "Atletico-MG", "Vasco", "Ceara", "Corinthians", "Gremio", "Internacional", "Santos", "Vitoria", "Juventude", "Fortaleza", "Sport Recife"],
+            canada: ["Vancouver Whitecaps"],
+            chile: ["U. De Concepcion", "Copiapo", "Cobreloa", "San Marcos de Arica", "Antofagasta", "D. Concepcion", "Rangers", "S. Wanderers", "San Luis", "Magallanes", "Recoleta", "Deportes Temuco", "Curico Unido", "CD Santa Cruz", "San Felipe", "S. Morning"],
+            colombia: ["Deportes Tolima", "Ind. Medellin", "Atl. Nacional", "Santa Fe", "America De Cali", "Junior", "Bucaramanga", "Millonarios", "Once Caldas", "Alianza", "Fortaleza", "Aguilas", "Dep. Pasto", "Pereira", "Dep. Cali", "Llaneros", "Envigado", "Chico", "U. Magdalena", "La Equidad"],
+            costa_rica: ["Alajuelense", "Saprissa", "Cartagines", "Liberia", "Zeledon", "Herediano", "Puntarenas FC", "Sporting San Jose", "Guadalupe", "San Carlos"],
+            denmark: ["Aarhus", "Midtjylland", "Brondby", "FC Copenhagen", "Sonderjyske", "Viborg", "Nordsjaelland", "Odense", "Randers FC", "Silkeborg", "Fredericia", "Vejle"],
+            ecuador: ["Ind. del Valle", "Barcelona SC", "LDU Quito", "U. Catolica", "Orense", "Libertad", "Dep. Cuenca", "Emelec", "Aucas", "Macara", "EL Nacional", "Delfin", "Tecnico U.", "Vinotinto", "Mushuc Runa", "Manta"],
+            england: ["Arsenal", "Chelsea", "Manchester City", "Crystal Palace", "Brighton", "Sunderland", "Bournemouth", "Tottenham", "Aston Villa", "Manchester Utd", "Liverpool", "Brentford", "Everton", "Newcastle", "Fulham", "Nottingham", "West Ham", "Leeds", "Burnley", "Wolves"],
+            england_2: ["Coventry", "Middlesbrough", "Millwall", "Stoke", "Preston", "Bristol City", "Ipswich", "Birmingham", "Hull", "Wrexham", "Derby", "West Brom", "QPR", "Southampton", "Watford", "Leicester", "Charlton", "Blackburn", "Sheffield Utd", "Oxford Utd", "Swansea", "Portsmouth", "Norwich", "Sheffield Wed"],
+            england_3: ["Cardiff", "Lincoln", "Bradford City", "Stockport County", "Huddersfield", "Bolton", "Stevenage", "Luton", "Wycombe", "Reading", "Mansfield", "Wigan", "Blackpool", "Peterborough", "Barnsley", "Leyton Orient", "AFC Wimbledon", "Burton", "Northampton", "Exeter", "Plymouth", "Rotherham", "Doncaster", "Port Vale"],
+            france: ["PSG", "Marseille", "Lens", "Strasbourg", "Rennes", "Lille", "Lyon", "Monaco", "Nice", "Toulouse", "Paris FC", "Le Havre", "Angers", "Metz", "Brest", "Nantes", "Lorient", "Auxerre"],
+            france_2: ["Troyes", "St Etienne", "Red Star", "Le Mans", "Pau FC", "Reims", "Dunkerque", "Montpellier", "Guingamp", "Annecy", "Grenoble", "Clermont", "Rodez", "Boulogne", "Laval", "Amiens", "Nancy", "Bastia"],
+            germany: ["Bayern Munich", "Bayer Leverkusen", "Dortmund", "RB Leipzig", "Stuttgart", "Eintracht Frankfurt", "Hoffenheim", "Werder Bremen", "FC Koln", "Freiburg", "B. Monchengladbach", "Union Berlin", "Augsburg", "Hamburger SV", "Wolfsburg", "St. Pauli", "Mainz", "Heidenheim"],
+            greece: ["Olympiacos Piraeus", "PAOK", "AEK Athens", "Levadiakos", "Volos", "Panathinaikos", "Aris", "Kifisia", "Panetolikos", "Atromitos", "OFI Crete", "Asteras Tripolis", "AEL Larissa", "Panserraikos"],
+            guatemala: ["Municipal", "Deportivo Mixco", "Antigua", "Aurora F.C.", "Malacateco", "Xelaju", "Deportivo Achuapa", "Mictlan", "Coban Imperial", "Marquense", "Guastatoya", "Comunicaciones"],
+            honduras: ["Marathon", "Olimpia", "Motagua", "Platense", "Real Espana", "UPNFM", "Olancho", "Juticalpa", "Genesis", "Victoria", "Choloma"],
+            hungary: ["Gyor", "Ferencvaros", "Debrecen", "Puskas Academy", "Paks", "Kisvarda", "Zalaegerszegi", "MTK Budapest", "Ujpest", "DVTK", "Nyiregyhaza", "Kazincbarcika"],
+            iran: ["Sepahan", "Persepolis", "Chadormalu", "Esteghlal F.C.", "Tractor", "Kheybar Khorramabad", "Gol Gohar", "Fajr Sepasi", "Malavan", "Esteghlal Khuzestan", "Aluminium Arak", "Paykan", "Zob Ahan", "Foolad", "Shams Azar Qazvin", "Mes Rafsanjan"],
+            israel: ["H. Beer Sheva", "Beitar Jerusalem", "Maccabi Tel Aviv", "Hapoel Tel Aviv", "Netanya", "Maccabi Haifa", "Sakhnin", "Hapoel Haifa", "SC Ashdod", "Hapoel Petah Tikva", "Ironi Tiberias", "Kiryat Shmona", "Hapoel Jerusalem", "Maccabi Bnei Raina"],
+            israel_2: ["Maccabi Petah Tikva", "M. Herzliya", "Hapoel Kfar Saba", "H. Ironi Rishon", "MS Kafr Qasim", "Hapoel Kfar Shalem", "Kiryat Yam", "Hap. Ramat Gan", "H. Akko", "Ironi Modiin", "H. Raanana", "Hapoel Afula", "Hapoel Hadera", "Maccabi Jaffa", "Bnei Yehuda", "Nof Hagalil"],
+            italy: ["AS Roma", "Napoli", "Inter", "Bologna", "AC Milan", "Juventus", "Como", "Sassuolo", "Lazio", "Udinese", "Torino", "Cremonese", "Atalanta", "Cagliari", "Parma", "Lecce", "Pisa", "Genoa", "Fiorentina", "Verona"],
+            italy_2: ["Frosinone", "Monza", "Venezia", "Cesena", "Palermo", "Modena", "Catanzaro", "Empoli", "Juve Stabia", "Padova", "Avellino", "Reggiana", "Carrarese", "Sudtirol", "Entella", "Bari", "Sampdoria", "Spezia", "Mantova", "Pescara"],
+            jamaica: ["Montego Bay", "Portmore", "Racing United", "Cavalier", "Waterhouse", "Tivoli", "Harbour View", "Mount Pleasant", "Chapelton", "Dunbeholden", "Treasure Beach", "Arnett Gardens", "Molynes", "Spanish Town Police"],
+            japan: ["Tokyo Giants", "Osaka Tigers", "Kyoto Sanga", "Yokohama Marinos", "Nagoya Grampus"],
+            kazakhstan: ["Kairat Almaty", "FC Astana", "Tobol", "Yelimay Semey", "Aktobe", "Zhenis", "Ordabasy", "Okzhetpes", "Kyzylzhar", "Ulytau", "Kaisar Kyzylorda", "Zhetysu Taldykorgan", "Atyrau", "Turan"],
+            montenegro: ["Sutjeska", "Mornar Bar", "Decic", "Jezero", "Petrovac", "Buducnost", "Mladost DG", "Arsenal Tivat", "Bokelj", "Jedinstvo"],
+            netherlands: ["PSV", "Feyenoord", "AZ Alkmaar", "Ajax", "Utrecht", "Groningen", "Nijmegen", "Twente", "G.A. Eagles", "Sittard", "Sparta Rotterdam", "Heerenveen", "FC Volendam", "NAC Breda", "Zwolle", "Excelsior", "Telstar", "Heracles"],
+            netherlands_2: ["Den Haag", "Cambuur", "De Graafschap", "Jong PSV", "Den Bosch", "Willem II", "Roda", "Almere City", "Waalwijk", "FC Emmen", "Dordrecht", "Venlo", "Jong Utrecht", "Helmond", "Eindhoven FC", "Jong AZ", "Oss", "Maastricht", "Jong Ajax", "Vitesse"],
+            new_zealand: ["Auckland FC", "Wellington Olympic", "Auckland City", "Miramar", "Western Springs", "Auckland FC 2", "Christchurch", "Birkenhead", "Western Suburbs", "Wellington Phoenix 2", "Auckland United", "Coastal Spirit"],
+            peru: ["U. de Deportes", "Alianza Lima", "Cusco", "Alianza Atl.", "Sporting Cristal", "FBC Melgar", "Sport Huancayo", "Deportivo Garcilaso", "AD Tarma", "Cienciano", "Los Chankas", "Grau", "Sport Boys", "Juan Pablo II", "Cajamarca", "Binacional", "Ayacucho", "Comerciantes Unidos", "Alianza Huanuco"],
+            poland: ["Gornik Zabrze", "Wisla Plock", "Rakow", "Jagiellonia", "Cracovia", "Radomiak Radom", "Lech Poznan", "Zaglebie", "Korona Kielce", "Pogon Szczecin", "Arka Gdynia", "Lechia Gdansk", "Widzew Lodz", "GKS Katowice", "Motor Lublin", "Legia", "Termalica B-B.", "Piast Gliwice"],
+            poland_2: ["Wisla", "Polonia Bytom", "Grodzisk M.", "Chrobry Glogow", "KS Wieczysta Krakow", "Ruch Chorzow", "Polonia Warszawa", "S. Rzeszow", "Legnica", "Slask Wroclaw", "LKS Lodz", "Pogon Siedlce", "Odra Opole", "Puszcza", "Pruszkow", "Tychy", "Stal Mielec", "Leczna"],
+            portugal: ["FC Porto", "Sporting CP", "Benfica", "Gil Vicente", "Famalicao", "Moreirense", "Braga", "Vitoria Guimaraes", "Estoril", "Nacional", "Rio Ave", "Estrela", "Santa Clara", "Alverca", "Casa Pia", "Arouca", "Tondela", "AFS"],
+            portugal_2: ["Maritimo", "Sporting CP B", "Academico Viseu", "Chaves", "Leiria", "Vizela", "Torreense", "Lusitania FC", "Penafiel", "SC Farense", "Oliveirense", "Benfica B", "FC Porto B", "Feirense", "Leixoes", "Felgueiras", "Pacos Ferreira", "Portimonense"],
+            saudi_arabia: ["Al Nassr", "Al Hilal", "Al Taawon", "Al Ahli SC", "Al Qadsiah", "Neom SC", "Al Khaleej", "Al Ittihad", "Al Ettifaq", "Al Fayha", "Al Kholood", "Al Hazem", "Al Shabab", "Al Riyadh", "Al Okhdood", "Damac", "Al Fateh", "Al Najma"],
+            scotland: ["Hearts", "Celtic", "Hibernian", "Rangers", "Falkirk", "Motherwell", "Dundee Utd", "Aberdeen", "St. Mirren", "Kilmarnock", "Dundee FC", "Livingston"],
+            serbia: ["Partizan", "Crvena zvezda", "Vojvodina", "Novi Pazar", "Zeleznicar Pancevo", "Cukaricki", "Radnik", "OFK Beograd Mozzart Bet", "Mladost", "Radnicki 1923", "TSC", "Javor", "IMT Novi Beograd", "Radnicki Nis", "Sp. Subotica", "Napredak"],
+            south_korea: ["Jeonbuk", "Gimcheon Sangmu", "Daejeon", "Pohang", "Seoul", "Gangwon", "Anyang", "Gwangju FC", "Ulsan HD", "Suwon FC", "Jeju SK", "Daegu"],
+            south_korea_2: ["Incheon", "Suwon Bluewings", "Bucheon FC 1995", "Seoul E-Land", "Seongnam", "Jeonnam", "Gimpo FC", "Busan", "Asan", "Hwaseong", "Gyeongnam", "Cheongju", "Cheonan City", "Ansan Greeners"],
+            spain: ["Barcelona", "Real Madrid", "Villarreal", "Atl. Madrid", "Betis", "Espanyol", "Getafe", "Ath Bilbao", "Sevilla", "Real Sociedad", "Celta Vigo", "Elche", "Alaves", "Rayo Vallecano", "Mallorca", "Valencia", "Osasuna", "Girona", "Levante", "Oviedo"],
+            switzerland: ["Thun", "St. Gallen", "Basel", "Sion", "Young Boys", "Lugano", "Zurich", "Lausanne", "Servette", "Luzern", "Grasshoppers", "Winterthur"],
+            switzerland_2: ["Vaduz", "Aarau", "Yverdon", "Lausanne Ouchy", "Xamax", "Rapperswil-Jona", "Stade Nyonnais", "Etoile-Carouge", "Wil", "Bellinzona"],
+            sweden: ["Mjallby", "Hammarby", "GAIS", "Goteborg", "Djurgarden", "Malmo FF", "AIK", "Elfsborg", "Sirius", "Hacken", "Halmstad", "Brommapojkarna", "Degerfors", "Norrkoping", "Oster", "Varnamo"],
+            turkey: ["Galatasaray", "Fenerbahce", "Trabzonspor", "Goztepe", "Besiktas", "Samsunspor", "Gaziantep", "Alanyaspor", "Kocaelispor", "Konyaspor", "Rizespor", "Basaksehir", "Kasimpasa", "Antalyaspor", "Genclerbirligi", "Eyupspor", "Kayserispor", "Karagumruk"],
+            usa: ["San Diego FC", "Los Angeles FC", "Minnesota United", "Seattle Sounders", "Austin FC", "FC Dallas", "Portland Timbers", "Real Salt Lake", "San Jose Earthquakes", "Colorado Rapids", "Houston Dynamo", "St. Louis City", "Los Angeles Galaxy", "Sporting Kansas City", "Philadelphia Union", "FC Cincinnati", "Inter Miami", "Charlotte", "New York City", "Nashville SC", "Columbus Crew", "Chicago Fire", "Orlando City", "New York Red Bulls", "New England Revolution", "Toronto FC", "CF Montreal", "Atlanta Utd", "DC United"],
+            venezuela: ["La Guaira", "Carabobo", "Dep. Tachira", "Universidad Central", "Puerto Cabello", "Monagas", "Caracas", "Metropolitanos", "Anzoategui FC", "Zamora", "Rayo Zuliano", "Estudiantes Merida", "Portuguesa", "Yaracuyanos"],
+            wales: ["Wrexham"],
+
+        };
+
+        // Sort all teams alphabetically
+        for (let country in teamsData) {
+            teamsData[country].sort((a, b) => a.localeCompare(b));
+        }
+
+        // Get DOM elements
+        const countrySelect = document.getElementById('country');
+        const teamSelect = document.getElementById('team');
+        const gamesSelect = document.getElementById('number_games');
+        const selectedCountrySpan = document.getElementById('selected-country');
+        const selectedTeamSpan = document.getElementById('selected-team');
+        const selectedGamesSpan = document.getElementById('selected-games');
+        const commandPreview = document.getElementById('command-preview');
+        const runCommandBtn = document.getElementById('run-command-btn');
+
+
+        const labelTeamsAnalyzed = document.getElementById('teams-analyzed');
+        const labelGamesAnalyzed = document.getElementById('number-games-analyzed');
+        const labelFailedAnalyses = document.getElementById('failed-analyses');
+        const labelMediaCornersFavor = document.getElementById('media-corners-favor');
+        const labelMediaCornersAgainst = document.getElementById('media-corners-against');
+        const labelMediaCorners = document.getElementById('media-corners');
+
+        // Update teams dropdown when country changes
+        countrySelect.addEventListener('change', function () {
+            const selectedCountry = this.value;
+
+            // Clear previous teams
+            teamSelect.innerHTML = '';
+
+            if (selectedCountry) {
+                // Add teams for the selected country
+                const teams = teamsData[selectedCountry];
+
+                // Add default option
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "-- Select a team --";
+                teamSelect.appendChild(defaultOption);
+
+                // Add team options
+                teams.forEach(team => {
+                    const option = document.createElement('option');
+                    option.value = team.toLowerCase().replace(/\s+/g, '-');
+                    option.textContent = team;
+                    teamSelect.appendChild(option);
+                });
+
+                // Update displayed selection
+                selectedCountrySpan.textContent = countrySelect.options[countrySelect.selectedIndex].text;
+                selectedTeamSpan.textContent = "Not selected";
+
+                // Update command preview
+                updateCommandPreview();
+            } else {
+                // Reset if no country selected
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "-- First select a country --";
+                teamSelect.appendChild(defaultOption);
+
+                selectedCountrySpan.textContent = "Not selected";
+                selectedTeamSpan.textContent = "Not selected";
+
+                // Update command preview
+                updateCommandPreview();
+            }
+        });
+
+        // Update displayed team when team selection changes
+        teamSelect.addEventListener('change', function () {
+            if (this.value) {
+                selectedTeamSpan.textContent = this.options[this.selectedIndex].text;
+                // Enable the run command button when a team is selected
+                runCommandBtn.disabled = false;
+            } else {
+                selectedTeamSpan.textContent = "Not selected";
+                // Disable the run command button when no team is selected
+                runCommandBtn.disabled = true;
+            }
+
+            // Update command preview
+            updateCommandPreview();
+        });
+
+        // Update displayed games when games selection changes
+        gamesSelect.addEventListener('change', function () {
+            selectedGamesSpan.textContent = this.value;
+
+            // Update command preview
+            updateCommandPreview();
+        });
+
+        // Function to update the command preview
+        function updateCommandPreview() {
+            // const country = countrySelect.value;
+            const country = countrySelect.options[countrySelect.selectedIndex]?.text;
+            const team = teamSelect.options[teamSelect.selectedIndex]?.text || "Not selected";
+            const games = gamesSelect.value;
+
+            if (country && team !== "Not selected" && games) {
+                commandPreview.textContent = `node flashcore.js '${team}' Soccer '${country}' ${games}`;
+            } else {
+                commandPreview.textContent = "Please select a country, team, and number of games";
+            }
+        }
+
+        // Function to run command with selected values
+        async function runSelectedCommand() {
+            const country = countrySelect.options[countrySelect.selectedIndex]?.text;
+            const team = teamSelect.options[teamSelect.selectedIndex]?.text;
+            const games = gamesSelect.value;
+
+            if (!country || !team || !games) {
+                document.getElementById('output').innerHTML = 'Error: Please select a country, team, and number of games';
+                return;
+            }
+
+            // Construct the command with selected values
+            const command = `node flashcore.js '${team}' Soccer '${country}' ${games}`;
+
+            // Call the existing runCommand function
+            await runCommand(command);
+        }
+
+        // Function to run command with selected values
+        async function runAllTeams() {
+
+            const country = countrySelect.options[countrySelect.selectedIndex]?.text;
+            const country_option = countrySelect.options[countrySelect.selectedIndex]?.value;
+
+            const games = gamesSelect.value;
+
+            if (!country || !games) {
+                document.getElementById('output').innerHTML = 'Error: Please select a country and number of games';
+                return;
+            }
+
+
+            const vecTeams = teamsData[country_option];
+
+            console.log(`Nº Teams of country ${country} : ${vecTeams.length}`);
+
+
+            for (let i = 0; i < vecTeams.length; i++) {
+
+                const command = `node flashcore.js '${vecTeams[i]}' Soccer '${country}' ${games}`;
+                console.log(`${i + 1}. ${vecTeams[i]}   ---> command =  ${command} `);
+                document.getElementById('output').innerHTML = command;
+
+                // Call the existing runCommand function
+                await runCommand(command);
+            }
+
+        }
+
+        async function runAllTeams() {
+
+            const country = countrySelect.options[countrySelect.selectedIndex]?.text;
+            const country_option = countrySelect.options[countrySelect.selectedIndex]?.value;
+
+            const games = gamesSelect.value;
+
+            if (!country || !games) {
+                document.getElementById('output').innerHTML = 'Error: Please select a country and number of games';
+                return;
+            }
+
+
+            const vecTeams = teamsData[country_option];
+
+            console.log(`Nº Teams of country ${country} : ${vecTeams.length}`);
+
+
+            for (let i = 0; i < vecTeams.length; i++) {
+
+                const command = `node flashcore.js '${vecTeams[i]}' Soccer '${country}' ${games}`;
+                console.log(`${i + 1}. ${vecTeams[i]}   ---> command =  ${command} `);
+                document.getElementById('output').innerHTML = command;
+
+                // Call the existing runCommand function
+                await runCommand(command);
+            }
+
+        }
+        async function newRightButton() {
+
+
+
+            try {
+                // Load JSON file from server
+                const response = await fetch('cornerData.json');
+                const data = await response.json();
+
+
+                // Access specific values
+                console.log("Loaded data:", data);
+
+                document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
+
+
+                labelTeamsAnalyzed.textContent = data.teamAnalyze;
+                labelGamesAnalyzed.textContent = data.nGamesAnalyze;
+                labelFailedAnalyses.textContent = data.nFailedAnalyses;
+                labelMediaCornersFavor.textContent = data.mediaCornersFavor
+                labelMediaCornersAgainst.textContent = data.mediaCornersAgainst
+                labelMediaCorners.textContent = data.mediaCorners
+
+            } catch (error) {
+                console.log(`Error: ${error.message}`);
+            }
+
+        }
+
+
+        // Existing runCommand function
+        async function runCommand(command) {
+            try {
+                document.getElementById('output').innerHTML = 'Running command: ' + command;
+                const response = await fetch('/run-command', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: command })
+                });
+                const result = await response.json();
+                document.getElementById('output').innerHTML = result.output;
+            } catch (error) {
+                document.getElementById('output').innerHTML = 'Error: ' + error.message;
+            }
+        }
+
+
+
+        // Initialize command preview
+        updateCommandPreview();
+
+        function mostrarIframe() {
+            const container = document.getElementById('iframe-container');
+            const iframe = document.getElementById('meu-iframe');
+
+            // Define a URL que quer carregar no iframe
+            // iframe.src = 'hello_world.html';
+            iframe.src = 'corners.html';
+            container.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

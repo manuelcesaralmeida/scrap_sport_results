@@ -1,0 +1,62 @@
+{
+  "teamAnalyze": "Estoril",
+  "nGamesAnalyze": "1",
+  "nFailedAnalyses": 0,
+  "vecTotalCornersFavor": [
+    3
+  ],
+  "vecTotalCornersAgainst": [
+    7
+  ],
+  "vecTotalCorners": [
+    10
+  ],
+  "vecCornersResult": [
+    "L"
+  ],
+  "vecTotalGoalsFavor": [
+    4
+  ],
+  "vecTotalGoalsAgainst": [
+    1
+  ],
+  "vecTotalGoals": [
+    5
+  ],
+  "vecGoalsResult": [
+    "V"
+  ],
+  "vecBTTS": [
+    1
+  ],
+  "vecTotalShotsFavor": [
+    18
+  ],
+  "vecTotalShotAgainst": [
+    24
+  ],
+  "vecTotalShots": [
+    42
+  ],
+  "vecShotsTargetFavor": [
+    8
+  ],
+  "vecShotsTargetAgainst": [
+    14
+  ],
+  "vecTotalShotsTarget": [
+    22
+  ],
+  "mediaCornersFavor": "3.00",
+  "mediaCornersAgainst": "7.00",
+  "mediaCorners": "10.00",
+  "mediaGoalsFavor": "4.00",
+  "mediaGoalsAgainst": "1.00",
+  "mediaGoals": "5.00",
+  "mediaTotalShotsFavor": "18.00",
+  "mediaTotalShotsAgainst": "24.00",
+  "mediaTotalShots": "42.00",
+  "mediaTotalShotsTargetFavor": "8.00",
+  "mediaTotalShotsTargetAgainst": "14.00",
+  "mediaTotalShotsTarget": "22.00"
+}

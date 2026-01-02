@@ -1,197 +1,62 @@
 {
-  "teamAnalyze": "Toulouse",
-  "nGamesAnalyze": "10",
+  "teamAnalyze": "Villarreal",
+  "nGamesAnalyze": "1",
   "nFailedAnalyses": 0,
   "vecTotalCornersFavor": [
-    9,
-    4,
-    1,
-    1,
-    11,
-    4,
-    10,
-    5,
-    5,
     5
   ],
   "vecTotalCornersAgainst": [
-    0,
-    7,
-    2,
-    9,
-    1,
-    6,
-    2,
-    8,
-    2,
-    1
+    10
   ],
   "vecTotalCorners": [
-    9,
-    11,
-    3,
-    10,
-    12,
-    10,
-    12,
-    13,
-    7,
-    6
+    15
   ],
   "vecCornersResult": [
-    "V",
-    "L",
-    "L",
-    "L",
-    "V",
-    "L",
-    "V",
-    "L",
-    "V",
-    "V"
+    "L"
   ],
   "vecTotalGoalsFavor": [
-    2,
-    3,
-    1,
-    2,
-    0,
-    1,
-    0,
-    2,
-    0,
-    4
-  ],
-  "vecTotalGoalsAgainst": [
-    1,
-    0,
-    0,
-    2,
-    1,
-    1,
-    0,
-    2,
-    1,
     0
   ],
+  "vecTotalGoalsAgainst": [
+    2
+  ],
   "vecTotalGoals": [
-    3,
-    3,
-    1,
-    4,
-    1,
-    2,
-    0,
-    4,
-    1,
-    4
+    2
   ],
   "vecGoalsResult": [
-    "V",
-    "V",
-    "V",
-    "D",
-    "L",
-    "D",
-    "D",
-    "D",
-    "L",
-    "V"
+    "L"
   ],
   "vecBTTS": [
-    1,
-    0,
-    0,
-    1,
-    0,
-    1,
-    0,
-    1,
-    0,
     0
   ],
   "vecTotalShotsFavor": [
-    38,
-    14,
-    12,
-    12,
-    50,
-    12,
-    36,
-    30,
-    20,
-    32
+    28
   ],
   "vecTotalShotAgainst": [
-    8,
-    18,
-    6,
-    40,
-    12,
-    20,
-    18,
-    22,
-    28,
-    4
+    38
   ],
   "vecTotalShots": [
-    46,
-    32,
-    18,
-    52,
-    62,
-    32,
-    54,
-    52,
-    48,
-    36
+    66
   ],
   "vecShotsTargetFavor": [
-    10,
-    8,
-    6,
-    8,
-    12,
-    4,
-    4,
-    8,
-    4,
-    14
+    10
   ],
   "vecShotsTargetAgainst": [
-    4,
-    4,
-    0,
-    10,
-    4,
-    4,
-    6,
-    10,
-    10,
-    4
+    10
   ],
   "vecTotalShotsTarget": [
-    14,
-    12,
-    6,
-    18,
-    16,
-    8,
-    10,
-    18,
-    14,
-    18
+    20
   ],
-  "mediaCornersFavor": "5.50",
-  "mediaCornersAgainst": "3.80",
-  "mediaCorners": "9.30",
-  "mediaGoalsFavor": "1.50",
-  "mediaGoalsAgainst": "0.80",
-  "mediaGoals": "2.30",
-  "mediaTotalShotsFavor": "25.60",
-  "mediaTotalShotsAgainst": "17.60",
-  "mediaTotalShots": "43.20",
-  "mediaTotalShotsTargetFavor": "7.80",
-  "mediaTotalShotsTargetAgainst": "5.60",
-  "mediaTotalShotsTarget": "13.40"
+  "mediaCornersFavor": "5.00",
+  "mediaCornersAgainst": "10.00",
+  "mediaCorners": "15.00",
+  "mediaGoalsFavor": "0.00",
+  "mediaGoalsAgainst": "2.00",
+  "mediaGoals": "2.00",
+  "mediaTotalShotsFavor": "28.00",
+  "mediaTotalShotsAgainst": "38.00",
+  "mediaTotalShots": "66.00",
+  "mediaTotalShotsTargetFavor": "10.00",
+  "mediaTotalShotsTargetAgainst": "10.00",
+  "mediaTotalShotsTarget": "20.00"
 }

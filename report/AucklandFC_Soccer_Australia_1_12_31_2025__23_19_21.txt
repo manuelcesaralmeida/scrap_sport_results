@@ -1,0 +1,11 @@
+✅ Successfully loaded https://www.flashscore.com/
+✅ Click on 'Reject All' cookies
+teamAnalyze   = Auckland FC
+category      = Soccer
+country       = Australia
+nGamesAnalyze = 1
+Successfully set search value to: "Auckland FC"
+50
+BEGIN - Get list teams
+END - Get list teams
+teamAnalyze = Auckland FC

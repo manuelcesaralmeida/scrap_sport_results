@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corner Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 500px;
+            margin-bottom: 30px;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .favor-color {
+            color: #3498db;
+        }
+
+        .against-color {
+            color: #e74c3c;
+        }
+
+        .total-color {
+            color: #2ecc71;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+        }
+
+        .error {
+            text-align: center;
+            padding: 20px;
+            color: #e74c3c;
+            background-color: #fdf2f2;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+
+            .stats-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Corner Statistics</h1>
+        <p class="description">Visualization of corner statistics across matches showing corners in favor, against, and
+            total corners.</p>
+
+        <div id="loading" class="loading">Loading data...</div>
+        <div id="error" class="error" style="display: none;"></div>
+
+        <div class="chart-container">
+            <canvas id="cornerChart"></canvas>
+        </div>
+
+        <div class="controls">
+            <button id="toggleFavor">Toggle Corners Favor</button>
+            <button id="toggleAgainst">Toggle Corners Against</button>
+            <button id="toggleTotal">Toggle Total Corners</button>
+            <button id="resetView">Reset View</button>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>Average Corners Favor</h3>
+                <div class="stat-value favor-color" id="avgFavor">-</div>
+                <p>Per match</p>
+            </div>
+            <div class="stat-box">
+                <h3>Average Corners Against</h3>
+                <div class="stat-value against-color" id="avgAgainst">-</div>
+                <p>Per match</p>
+            </div>
+            <div class="stat-box">
+                <h3>Average Total Corners</h3>
+                <div class="stat-value total-color" id="avgTotal">-</div>
+                <p>Per match</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global chart variable
+        let cornerChart = null;
+
+        // Function to load and initialize data
+        async function loadDataAndInitialize() {
+            try {
+                // Show loading
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('error').style.display = 'none';
+
+                const jsonPath = 'cornerData.json';
+
+                // fixtures/cornerData.json
+                // backup/corners.html
+                // /home/cesar/ces/bets/webbet/backup/corners.html
+                // /home/cesar/ces/bets/webbet/fixtures/cornerData.json
+
+                // Fetch data from JSON file
+                const response = await fetch(jsonPath);
+                // const response = await fetch('file:///home/cesar/ces/bets/webbet/fixtures/cornerData.json');
+
+
+                // if (!response.ok) {
+                //     throw new Error(`HTTP error! status: ${response.status}`);
+                // }
+
+                // const rawData = fs.readFileSync('cornerData.json', 'utf8');
+                // const data = JSON.parse(rawData);
+
+                const data = await response.json();
+
+                // Hide loading
+                document.getElementById('loading').style.display = 'none';
+
+                // Validate data structure
+                if (!data.vecTotalCornersFavor || !data.vecTotalCornersAgainst || !data.vecTotalCorners) {
+                    throw new Error('Invalid data structure in JSON file');
+                }
+
+                // Initialize chart with the loaded data
+                initializeChart(data);
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('error').textContent =
+                    `Error loading data: ${error.message}. Please check if /cornerData.json exists and has the correct format.`;
+            }
+        }
+
+        function initializeChart(data) {
+            // Calculate averages using the data from JSON
+            const avgFavor = (data.vecTotalCornersFavor.reduce((a, b) => a + b, 0) / data.vecTotalCornersFavor.length).toFixed(2);
+            const avgAgainst = (data.vecTotalCornersAgainst.reduce((a, b) => a + b, 0) / data.vecTotalCornersAgainst.length).toFixed(2);
+            const avgTotal = (data.vecTotalCorners.reduce((a, b) => a + b, 0) / data.vecTotalCorners.length).toFixed(2);
+
+            // Update average displays
+            document.getElementById('avgFavor').textContent = avgFavor;
+            document.getElementById('avgAgainst').textContent = avgAgainst;
+            document.getElementById('avgTotal').textContent = avgTotal;
+
+            // Generate match labels based on data length
+            const matchLabels = data.vecTotalCornersFavor.map((_, index) => `Match ${index + 1}`);
+
+            // Chart setup
+            const ctx = document.getElementById('cornerChart').getContext('2d');
+            cornerChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: matchLabels,
+                    datasets: [
+                        {
+                            label: 'Corners Favor',
+                            data: data.vecTotalCornersFavor,
+                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                            borderColor: 'rgba(52, 152, 219, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Corners Against',
+                            data: data.vecTotalCornersAgainst,
+                            backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                            borderColor: 'rgba(231, 76, 60, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Total Corners',
+                            data: data.vecTotalCorners,
+                            backgroundColor: 'rgba(46, 204, 113, 0.7)',
+                            borderColor: 'rgba(46, 204, 113, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Corners'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Matches'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    }
+                }
+            });
+
+            // Add event listeners after chart is created
+            setupEventListeners();
+        }
+
+        function setupEventListeners() {
+            document.getElementById('toggleFavor').addEventListener('click', function () {
+                const dataset = cornerChart.data.datasets[0];
+                dataset.hidden = !dataset.hidden;
+                cornerChart.update();
+            });
+
+            document.getElementById('toggleAgainst').addEventListener('click', function () {
+                const dataset = cornerChart.data.datasets[1];
+                dataset.hidden = !dataset.hidden;
+                cornerChart.update();
+            });
+
+            document.getElementById('toggleTotal').addEventListener('click', function () {
+                const dataset = cornerChart.data.datasets[2];
+                dataset.hidden = !dataset.hidden;
+                cornerChart.update();
+            });
+
+            document.getElementById('resetView').addEventListener('click', function () {
+                cornerChart.data.datasets.forEach(dataset => {
+                    dataset.hidden = false;
+                });
+                cornerChart.update();
+            });
+        }
+
+        // Load data when the page is ready
+        document.addEventListener('DOMContentLoaded', loadDataAndInitialize);
+    </script>
+</body>
+
+</html>

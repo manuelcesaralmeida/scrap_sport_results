@@ -177,7 +177,7 @@ async function extractEventsFromDOM(page) {
 
 (async () => {
     const browser = await puppeteer.launch({
-        headless: false, // Set to true to run headless
+        headless: true, // Set to true to run headless
         defaultViewport: null,
         args: ['--start-maximized']
     });

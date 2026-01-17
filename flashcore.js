@@ -1084,7 +1084,7 @@ function filterTeam(data, name, category, country) {
 
         for (let j = 0; j < topStats.length; j++) {
 
-            if (topStats[j].statName === 'Corner Kicks') {
+            if (topStats[j].statName === 'Corner kicks') {
                 console.log(`topStats[${j}].statName   = ${topStats[j].statName}`);
                 console.log(`topStats[${j}].homeValue  = ${topStats[j].homeValue}`);
                 console.log(`topStats[${j}].awayValue  = ${topStats[j].awayValue}`);
@@ -1107,11 +1107,7 @@ function filterTeam(data, name, category, country) {
                 shotsTargetFavor = parseInt(topStats[j].homeValue);
                 shotsTargetAgainst = parseInt(topStats[j].awayValue);
             }
-
-
-
         }
-
 
         goalsFavor = parseInt(matchStatus.homeScore);
         goalsAgainst = parseInt(matchStatus.awayScore);
@@ -1124,12 +1120,12 @@ function filterTeam(data, name, category, country) {
         totalGoalsAgainst += goalsAgainst;
         totalGoals += goalsFavor + goalsAgainst
 
-        totalShotsFavor += totalShotsFavor;
-        totalShotsAgainst += totalShotsAgainst;
+        // totalShotsFavor += totalShotsFavor;
+        // totalShotsAgainst += totalShotsAgainst;
         totalShots += totalShotsFavor + totalShotsAgainst
 
-        shotsTargetFavor += shotsTargetFavor;
-        shotsTargetAgainst += shotsTargetAgainst;
+        // shotsTargetFavor += shotsTargetFavor;
+        // shotsTargetAgainst += shotsTargetAgainst;
         totalShotsTarget += shotsTargetFavor + shotsTargetAgainst
 
         // console.log(`totalCornersFavor   = ${totalCornersFavor}`);
@@ -1151,8 +1147,6 @@ function filterTeam(data, name, category, country) {
         // console.log(`shotsTargetFavor    = ${shotsTargetFavor}`);
         // console.log(`shotsTargetAgainst  = ${shotsTargetAgainst}`);
         // console.log(`totalShotsTarget    = ${totalShotsTarget}`);
-
-
 
 
         if (matchStatus.homeTeam === teamAnalyze) {
@@ -1185,14 +1179,10 @@ function filterTeam(data, name, category, country) {
         }
 
 
-
-
         vecTotalCorners.push(cornersFavor + cornersAgainst)
         vecTotalGoals.push(goalsFavor + goalsAgainst)
         vecTotalShots.push(totalShotsFavor + totalShotsAgainst)
         vecTotalShotsTarget.push(shotsTargetFavor + shotsTargetAgainst)
-
-
 
         vecTime.push(matchStatus.dateTime);
         vecHomeTeam.push(matchStatus.homeTeam);
@@ -1200,13 +1190,11 @@ function filterTeam(data, name, category, country) {
         vecHomeScore.push(matchStatus.homeScore);
         vecAwayScore.push(matchStatus.awayScore);
 
-
         //         console.log('matchStatus.dateTime = ', matchStatus.dateTime);
         // console.log('matchStatus.homeTeam = ', matchStatus.homeTeam);
         // console.log('matchStatus.awayTeam = ', matchStatus.awayTeam);
         // console.log('matchStatus.homeScore = ', matchStatus.homeScore);
         // console.log('matchStatus.awayScore = ', matchStatus.awayScore);
-
 
 
         // if (cornersFavor > cornersAgainst) {
@@ -1219,7 +1207,6 @@ function filterTeam(data, name, category, country) {
         // else {
         //     vecCornersResult.push('L')
         // }
-
 
         if (vecTotalCornersFavor[i] > vecTotalCornersAgainst[i]) {
             vecCornersResult.push('V')
@@ -1281,8 +1268,6 @@ function filterTeam(data, name, category, country) {
 
         console.log('7500');
 
-
-
         // Do something else in parallel...
         console.log('7600');
         // Later, if you need to wait:
@@ -1292,11 +1277,7 @@ function filterTeam(data, name, category, country) {
         console.log('8000');
         await delay(2000);
 
-
-
-
     }
-
 
     // console.log('                                                  ');
     // console.log('--------------------------------------------------');
@@ -1369,15 +1350,11 @@ function filterTeam(data, name, category, country) {
 
     // calculatePercentage(vecTotalCorners, '>', '✅ Percentage of total corners greater than');
 
-
-
     // console.log('                                               ');
     // console.log('-----------------------------------------------');
     // console.log(`TEAM ANALYZE : ${teamAnalyze} - LAST ${nGamesAnalyze} GAMES`);
     // console.log('✅ Calculate Corner Percentage Less Than .... :');
     // console.log('                                               ');
-
-
 
 
     // calculatePercentage(vecTotalCorners, '<', '✅ Percentage of total corners less than')
@@ -2062,6 +2039,8 @@ function filterTeam(data, name, category, country) {
 
     //----------------------------------------------------------------------------------
 
+    var vec15mAllGoals = [];
+    
     console.log('                                                     ');
     console.log('-----------------------------------------------------');
     console.log(`TEAM ANALYZE : ${teamAnalyze} - LAST ${nGamesAnalyze} GAMES`);
@@ -2079,21 +2058,27 @@ function filterTeam(data, name, category, country) {
 
     var result = calculatePercentageInRange(vecNormalizedGoalMinutes, 0, 15);
     console.log(`Percentage of goals in range [0,15]   : ${result}%`);
+    vec15mAllGoals.push(result);
 
     var result = calculatePercentageInRange(vecNormalizedGoalMinutes, 16, 30);
     console.log(`Percentage of goals in range [16,30]  : ${result}%`);
+    vec15mAllGoals.push(result);
 
     var result = calculatePercentageInRange(vecNormalizedGoalMinutes, 31, 45);
     console.log(`Percentage of goals in range [31,45]  : ${result}%`);
+    vec15mAllGoals.push(result);
 
     var result = calculatePercentageInRange(vecNormalizedGoalMinutes, 46, 60);
     console.log(`Percentage of goals in range [46,60]  : ${result}%`);
+    vec15mAllGoals.push(result);
 
     var result = calculatePercentageInRange(vecNormalizedGoalMinutes, 61, 75);
     console.log(`Percentage of goals in range [61,75]  : ${result}%`);
+    vec15mAllGoals.push(result);
 
     var result = calculatePercentageInRange(vecNormalizedGoalMinutes, 76, 90);
     console.log(`Percentage of goals in range [76,90]  : ${result}%`);
+    vec15mAllGoals.push(result);
 
 
     console.log('                                            ');
@@ -2453,6 +2438,8 @@ function filterTeam(data, name, category, country) {
 
     // Create an object to hold all vectors
     const data = {
+        country,
+        dateLastGame:vecTime[0],
         teamAnalyze,
         nGamesAnalyze,
         nFailedAnalyses,
@@ -2471,6 +2458,7 @@ function filterTeam(data, name, category, country) {
         vecShotsTargetFavor,
         vecShotsTargetAgainst,
         vecTotalShotsTarget,
+        vec15mAllGoals,
         mediaCornersFavor,
         mediaCornersAgainst,
         mediaCorners,
@@ -2486,14 +2474,26 @@ function filterTeam(data, name, category, country) {
 
     };
 
+    const fileStatisticsTeam = 'public/' + teamAnalyze + '.json'
+
     // Write to JSON file
-    fs.writeFile('public/cornerData.json', JSON.stringify(data, null, 2), (err) => {
+    fs.writeFile(fileStatisticsTeam, JSON.stringify(data, null, 2), (err) => {
         if (err) {
             console.error('Error writing file:', err);
         } else {
             console.log('Data successfully written to cornerData.json');
         }
     });
+
+
+    // // Write to JSON file
+    // fs.writeFile('public/cornerData.json', JSON.stringify(data, null, 2), (err) => {
+    //     if (err) {
+    //         console.error('Error writing file:', err);
+    //     } else {
+    //         console.log('Data successfully written to cornerData.json');
+    //     }
+    // });
 
 
 

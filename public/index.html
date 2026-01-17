@@ -50,7 +50,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .statistics {
+        .statistics_home {
             margin: 20px 0;
             padding: 15px;
             background-color: rgb(225, 232, 22);
@@ -58,7 +58,21 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        .statistics_away {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: rgb(225, 232, 22);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
+        .statistics_media {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: rgb(225, 232, 22);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
         .instructions {
             margin: 20px 0;
@@ -180,6 +194,7 @@
             <option value="jamaica">Jamaica</option>
             <option value="japan">Japan</option>
             <option value="kazakhstan">Kazakhstan</option>
+            <option value="mexico">Mexico</option>
             <option value="montenegro">Montenegro</option>
             <option value="netherlands">Netherlands</option>
             <option value="netherlands_2">Netherlands 2</option>
@@ -208,7 +223,7 @@
     <div class="form-group">
         <label for="team">Select Team:</label>
         <select id="team">
-            <option value="">-- First select a country --</option>
+            <option value="">-- First select a team --</option>
         </select>
     </div>
 
@@ -325,16 +340,239 @@
         <p>Number of Games: <span id="selected-games" class="highlight">1</span></p>
     </div>
 
-    <div class="statistics">
-        <h3>Statistics :</h3>
+    <!--div class="statistics_home style="float: right;"">
+        <h3>Statistics Team Home:</h3>
         <p>Teams analyzed : <span id="teams-analyzed" class="highlight_blue"></span></p>
         <p>Games Analyzed : <span id="number-games-analyzed" class="highlight_blue"></span></p>
-        <p>Failed analyses     : <span id="failed-analyses" class="highlight_blue"></span></p>
+        <p>Failed analyses : <span id="failed-analyses" class="highlight_blue"></span></p>
         <p>Media Corners Favor : <span id="media-corners-favor" class="highlight_blue"></span></p>
         <p>Media Corners Against : <span id="media-corners-against" class="highlight_blue"></span></p>
         <p>Media Corners : <span id="media-corners" class="highlight_blue"></span></p>
-        <button onclick="newRightButton()" class="custom-button">New Right Button</button>
 
+        <p>Media Goals Favor : <span id="media-goals-favor" class="highlight_blue"></span></p>
+        <p>Media Goals Against : <span id="media-goals-against" class="highlight_blue"></span></p>
+        <p>Media Goals : <span id="media-goals" class="highlight_blue"></span></p>
+
+        <p>Media Total Shots Favor : <span id="media-total-shots-favor" class="highlight_blue"></span></p>
+        <p>MediaTotalShots Against : <span id="media-total-shots-against" class="highlight_blue"></span></p>
+        <p>Media Total Shots : <span id="media-total-shots" class="highlight_blue"></span></p>
+        <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor" class="highlight_blue"></span></p>
+        <p>Media Total Shots Target Against : <span id="media-total-shots-target-against" class="highlight_blue"></span></p>
+        <p>Media Total Shots Target : <span id="media-total-shots-target" class="highlight_blue"></span></p>
+
+        <button onclick="teamHome()" class="custom-button">Team Home : </button>
+    </div>
+
+    <div class="statistics_away" style="float: right;">
+        <h3>Statistics Team Away:</h3>
+        <p>Teams analyzed : <span id="teams-analyzed-away" class="highlight_blue"></span></p>
+        <p>Games Analyzed : <span id="number-games-analyzed-away" class="highlight_blue"></span></p>
+        <p>Failed analyses : <span id="failed-analyses-away" class="highlight_blue"></span></p>
+        <p>Media Corners Favor : <span id="media-corners-favor-away" class="highlight_blue"></span></p>
+        <p>Media Corners Against : <span id="media-corners-against-away" class="highlight_blue"></span></p>
+        <p>Media Corners : <span id="media-corners-away" class="highlight_blue"></span></p>
+    
+        <p>Media Goals Favor : <span id="media-goals-favor-away" class="highlight_blue"></span></p>
+        <p>Media Goals Against : <span id="media-goals-against-away" class="highlight_blue"></span></p>
+        <p>Media Goals : <span id="media-goals-away" class="highlight_blue"></span></p>
+    
+        <p>Media Total Shots Favor : <span id="media-total-shots-favor-away" class="highlight_blue"></span></p>
+        <p>MediaTotalShots Against : <span id="media-total-shots-against-away" class="highlight_blue"></span></p>
+        <p>Media Total Shots : <span id="media-total-shots-away" class="highlight_blue"></span></p>
+        <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor-away" class="highlight_blue"></span></p>
+        <p>Media Total Shots Target Against : <span id="media-total-shots-target-against-away" class="highlight_blue"></span></p>
+        <p>Media Total Shots Target : <span id="media-total-shots-target-away" class="highlight_blue"></span></p>
+    
+        <button onclick="teamAway()" class="custom-button">Team Away : </button>
+    </div-->
+
+    <!--div style="display: flex;">
+        <div class="statistics_home">
+            <h3>Statistics Team Home:</h3>
+            <p>Teams analyzed : <span id="teams-analyzed" class="highlight_blue"></span></p>
+            <p>Games Analyzed : <span id="number-games-analyzed" class="highlight_blue"></span></p>
+            <p>Failed analyses : <span id="failed-analyses" class="highlight_blue"></span></p>
+            <p>Media Corners Favor : <span id="media-corners-favor" class="highlight_blue"></span></p>
+            <p>Media Corners Against : <span id="media-corners-against" class="highlight_blue"></span></p>
+            <p>Media Corners : <span id="media-corners" class="highlight_blue"></span></p>
+    
+            <p>Media Goals Favor : <span id="media-goals-favor" class="highlight_blue"></span></p>
+            <p>Media Goals Against : <span id="media-goals-against" class="highlight_blue"></span></p>
+            <p>Media Goals : <span id="media-goals" class="highlight_blue"></span></p>
+    
+            <p>Media Total Shots Favor : <span id="media-total-shots-favor" class="highlight_blue"></span></p>
+            <p>MediaTotalShots Against : <span id="media-total-shots-against" class="highlight_blue"></span></p>
+            <p>Media Total Shots : <span id="media-total-shots" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target : <span id="media-total-shots-target" class="highlight_blue"></span></p>
+    
+            <button onclick="teamHome()" class="custom-button">Team Home : </button>
+        </div>
+    
+        <div class="statistics_away">
+            <h3>Statistics Team Away:</h3>
+            <p>Teams analyzed : <span id="teams-analyzed-away" class="highlight_blue"></span></p>
+            <p>Games Analyzed : <span id="number-games-analyzed-away" class="highlight_blue"></span></p>
+            <p>Failed analyses : <span id="failed-analyses-away" class="highlight_blue"></span></p>
+            <p>Media Corners Favor : <span id="media-corners-favor-away" class="highlight_blue"></span></p>
+            <p>Media Corners Against : <span id="media-corners-against-away" class="highlight_blue"></span></p>
+            <p>Media Corners : <span id="media-corners-away" class="highlight_blue"></span></p>
+    
+            <p>Media Goals Favor : <span id="media-goals-favor-away" class="highlight_blue"></span></p>
+            <p>Media Goals Against : <span id="media-goals-against-away" class="highlight_blue"></span></p>
+            <p>Media Goals : <span id="media-goals-away" class="highlight_blue"></span></p>
+    
+            <p>Media Total Shots Favor : <span id="media-total-shots-favor-away" class="highlight_blue"></span></p>
+            <p>MediaTotalShots Against : <span id="media-total-shots-against-away" class="highlight_blue"></span></p>
+            <p>Media Total Shots : <span id="media-total-shots-away" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor-away" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against-away" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target : <span id="media-total-shots-target-away" class="highlight_blue"></span></p>
+    
+            <button onclick="teamAway()" class="custom-button">Team Away : </button>
+        </div>
+    </div-->
+
+    <!--div style="display: flex; align-items: flex-start; gap: 20px;">
+
+        <div class="statistics_home" style="flex: 1;">
+            <h3>Statistics Team Home:</h3>
+            <p>Teams analyzed : <span id="teams-analyzed" class="highlight_blue"></span></p>
+            <p>Games Analyzed : <span id="number-games-analyzed" class="highlight_blue"></span></p>
+            <p>Failed analyses : <span id="failed-analyses" class="highlight_blue"></span></p>
+            <p>Media Corners Favor : <span id="media-corners-favor" class="highlight_blue"></span></p>
+            <p>Media Corners Against : <span id="media-corners-against" class="highlight_blue"></span></p>
+            <p>Media Corners : <span id="media-corners" class="highlight_blue"></span></p>
+
+            <p>Media Goals Favor : <span id="media-goals-favor" class="highlight_blue"></span></p>
+            <p>Media Goals Against : <span id="media-goals-against" class="highlight_blue"></span></p>
+            <p>Media Goals : <span id="media-goals" class="highlight_blue"></span></p>
+
+            <p>Media Total Shots Favor : <span id="media-total-shots-favor" class="highlight_blue"></span></p>
+            <p>MediaTotalShots Against : <span id="media-total-shots-against" class="highlight_blue"></span></p>
+            <p>Media Total Shots : <span id="media-total-shots" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor" class="highlight_blue"></span>
+            </p>
+            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against"
+                    class="highlight_blue"></span></p>
+            <p>Media Total Shots Target : <span id="media-total-shots-target" class="highlight_blue"></span></p>
+
+            <button onclick="teamHome()" class="custom-button">Team Home : </button>
+        </div>
+
+
+
+        <div class="statistics_away" style="flex: 1;">
+            <h3>Statistics Team Away:</h3>
+            <p>Teams analyzed : <span id="teams-analyzed-away" class="highlight_blue"></span></p>
+            <p>Games Analyzed : <span id="number-games-analyzed-away" class="highlight_blue"></span></p>
+            <p>Failed analyses : <span id="failed-analyses-away" class="highlight_blue"></span></p>
+            <p>Media Corners Favor : <span id="media-corners-favor-away" class="highlight_blue"></span></p>
+            <p>Media Corners Against : <span id="media-corners-against-away" class="highlight_blue"></span></p>
+            <p>Media Corners : <span id="media-corners-away" class="highlight_blue"></span></p>
+
+            <p>Media Goals Favor : <span id="media-goals-favor-away" class="highlight_blue"></span></p>
+            <p>Media Goals Against : <span id="media-goals-against-away" class="highlight_blue"></span></p>
+            <p>Media Goals : <span id="media-goals-away" class="highlight_blue"></span></p>
+
+            <p>Media Total Shots Favor : <span id="media-total-shots-favor-away" class="highlight_blue"></span></p>
+            <p>MediaTotalShots Against : <span id="media-total-shots-against-away" class="highlight_blue"></span></p>
+            <p>Media Total Shots : <span id="media-total-shots-away" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor-away"
+                    class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against-away"
+                    class="highlight_blue"></span></p>
+            <p>Media Total Shots Target : <span id="media-total-shots-target-away" class="highlight_blue"></span></p>
+
+            <button onclick="teamAway()" class="custom-button">Team Away : </button>
+        </div>
+    </div-->
+
+    <div style="display: flex; align-items: flex-start; gap: 20px;">
+        <!-- Left side: Home Statistics -->
+        <div class="statistics_home" style="flex: 1;">
+            <h3>Statistics Team Home:</h3>
+            <p>Teams analyzed : <span id="teams-analyzed" class="highlight_blue"></span></p>
+            <p>Games Analyzed : <span id="number-games-analyzed" class="highlight_blue"></span></p>
+            <p>Failed analyses : <span id="failed-analyses" class="highlight_blue"></span></p>
+            <p>Media Corners Favor : <span id="media-corners-favor" class="highlight_blue"></span></p>
+            <p>Media Corners Against : <span id="media-corners-against" class="highlight_blue"></span></p>
+            <p>Media Corners : <span id="media-corners" class="highlight_blue"></span></p>
+
+            <p>Media Goals Favor : <span id="media-goals-favor" class="highlight_blue"></span></p>
+            <p>Media Goals Against : <span id="media-goals-against" class="highlight_blue"></span></p>
+            <p>Media Goals : <span id="media-goals" class="highlight_blue"></span></p>
+
+            <p>Media Total Shots Favor : <span id="media-total-shots-favor" class="highlight_blue"></span></p>
+            <p>MediaTotalShots Against : <span id="media-total-shots-against" class="highlight_blue"></span></p>
+            <p>Media Total Shots : <span id="media-total-shots" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor" class="highlight_blue"></span>
+            </p>
+            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against"
+                    class="highlight_blue"></span></p>
+            <p>Media Total Shots Target : <span id="media-total-shots-target" class="highlight_blue"></span></p>
+            <p>15m All Goals : <span id="15m-all-goals" class="highlight_blue"></span></p>
+            <button onclick="teamHome()" class="custom-button">Team Home : </button>
+        </div>
+
+        <!-- First bold vertical divider -->
+        <div style="width: 3px; background-color: #333; height: 100%;"></div>
+
+        <!-- Middle: Away Statistics -->
+        <div class="statistics_away" style="flex: 1;">
+            <h3>Statistics Team Away:</h3>
+            <p>Teams analyzed : <span id="teams-analyzed-away" class="highlight_blue"></span></p>
+            <p>Games Analyzed : <span id="number-games-analyzed-away" class="highlight_blue"></span></p>
+            <p>Failed analyses : <span id="failed-analyses-away" class="highlight_blue"></span></p>
+            <p>Media Corners Favor : <span id="media-corners-favor-away" class="highlight_blue"></span></p>
+            <p>Media Corners Against : <span id="media-corners-against-away" class="highlight_blue"></span></p>
+            <p>Media Corners : <span id="media-corners-away" class="highlight_blue"></span></p>
+
+            <p>Media Goals Favor : <span id="media-goals-favor-away" class="highlight_blue"></span></p>
+            <p>Media Goals Against : <span id="media-goals-against-away" class="highlight_blue"></span></p>
+            <p>Media Goals : <span id="media-goals-away" class="highlight_blue"></span></p>
+
+            <p>Media Total Shots Favor : <span id="media-total-shots-favor-away" class="highlight_blue"></span></p>
+            <p>MediaTotalShots Against : <span id="media-total-shots-against-away" class="highlight_blue"></span></p>
+            <p>Media Total Shots : <span id="media-total-shots-away" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor-away"
+                    class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against-away"
+                    class="highlight_blue"></span></p>
+            <p>Media Total Shots Target : <span id="media-total-shots-target-away" class="highlight_blue"></span></p>
+            <p>15m All Goals : <span id="15m-all-goals-away" class="highlight_blue"></span></p>
+            <button onclick="teamAway()" class="custom-button">Team Away : </button>
+        </div>
+
+        <!-- Second bold vertical divider -->
+        <div style="width: 3px; background-color: #333; height: 100%;"></div>
+
+        <!-- Right side: Media Statistics -->
+        <div class="statistics_media" style="flex: 1;">
+            <h3>Statistics Team Media:</h3>
+            <p>Teams analyzed : <span id="teams-analyzed-media" class="highlight_blue"></span></p>
+            <p>Games Analyzed : <span id="number-games-analyzed-media" class="highlight_blue"></span></p>
+            <p>Failed analyses : <span id="failed-analyses-media" class="highlight_blue"></span></p>
+            <p>Media Corners Favor : <span id="media-corners-favor-media" class="highlight_blue"></span></p>
+            <p>Media Corners Against : <span id="media-corners-against-media" class="highlight_blue"></span></p>
+            <p>Media Corners : <span id="media-corners-media" class="highlight_blue"></span></p>
+
+            <p>Media Goals Favor : <span id="media-goals-favor-media" class="highlight_blue"></span></p>
+            <p>Media Goals Against : <span id="media-goals-against-media" class="highlight_blue"></span></p>
+            <p>Media Goals : <span id="media-goals-media" class="highlight_blue"></span></p>
+
+            <p>Media Total Shots Favor : <span id="media-total-shots-favor-media" class="highlight_blue"></span></p>
+            <p>MediaTotalShots Against : <span id="media-total-shots-against-media" class="highlight_blue"></span></p>
+            <p>Media Total Shots : <span id="media-total-shots-media" class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor-media"
+                    class="highlight_blue"></span></p>
+            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against-media"
+                    class="highlight_blue"></span></p>
+            <p>Media Total Shots Target : <span id="media-total-shots-target-media" class="highlight_blue"></span></p>
+            <p>15m All Goals : <span id="15m-all-goals-media" class="highlight_blue"></span></p>
+            <button onclick="teamMedia()" class="custom-button">Team Media : </button>
+        </div>
     </div>
 
     <div class="command-preview">
@@ -351,6 +589,8 @@
         <button id="run-command-btn" onclick="runSelectedCommand()" disabled>Run Command</button>
         <button id="run-all-teams-btn" onclick="runAllTeams()">Run All Teams</button>
         <button id="corners-btn" onclick="mostrarIframe()">Corners</button>
+        <button id="handicap-btn" onclick="runHandicap()">Handicap</button>
+
         <!-- <button onclick="newRightButton()" class="custom-button">New Right Button</button> -->
     </div>
 
@@ -400,6 +640,7 @@
             jamaica: ["Montego Bay", "Portmore", "Racing United", "Cavalier", "Waterhouse", "Tivoli", "Harbour View", "Mount Pleasant", "Chapelton", "Dunbeholden", "Treasure Beach", "Arnett Gardens", "Molynes", "Spanish Town Police"],
             japan: ["Tokyo Giants", "Osaka Tigers", "Kyoto Sanga", "Yokohama Marinos", "Nagoya Grampus"],
             kazakhstan: ["Kairat Almaty", "FC Astana", "Tobol", "Yelimay Semey", "Aktobe", "Zhenis", "Ordabasy", "Okzhetpes", "Kyzylzhar", "Ulytau", "Kaisar Kyzylorda", "Zhetysu Taldykorgan", "Atyrau", "Turan"],
+            mexico: ["Santos Laguna","Monterrey","Cruz Azul","Atlas","Atl. San Luis","Guadalajara Chivas","Necaxa","Pachuca","Toluca","Club America","Puebla","Tigres UANL","UNAM Pumas","Queretaro","Club Tijuana","Club Leon","Juarez","Mazatlan FC"],
             montenegro: ["Sutjeska", "Mornar Bar", "Decic", "Jezero", "Petrovac", "Buducnost", "Mladost DG", "Arsenal Tivat", "Bokelj", "Jedinstvo"],
             netherlands: ["PSV", "Feyenoord", "AZ Alkmaar", "Ajax", "Utrecht", "Groningen", "Nijmegen", "Twente", "G.A. Eagles", "Sittard", "Sparta Rotterdam", "Heerenveen", "FC Volendam", "NAC Breda", "Zwolle", "Excelsior", "Telstar", "Heracles"],
             netherlands_2: ["Den Haag", "Cambuur", "De Graafschap", "Jong PSV", "Den Bosch", "Willem II", "Roda", "Almere City", "Waalwijk", "FC Emmen", "Dordrecht", "Venlo", "Jong Utrecht", "Helmond", "Eindhoven FC", "Jong AZ", "Oss", "Maastricht", "Jong Ajax", "Vitesse"],
@@ -440,13 +681,58 @@
         const commandPreview = document.getElementById('command-preview');
         const runCommandBtn = document.getElementById('run-command-btn');
 
-
         const labelTeamsAnalyzed = document.getElementById('teams-analyzed');
         const labelGamesAnalyzed = document.getElementById('number-games-analyzed');
         const labelFailedAnalyses = document.getElementById('failed-analyses');
         const labelMediaCornersFavor = document.getElementById('media-corners-favor');
         const labelMediaCornersAgainst = document.getElementById('media-corners-against');
         const labelMediaCorners = document.getElementById('media-corners');
+        const labelMediaGoalsFavor = document.getElementById('media-goals-favor');
+        const labelMediaGoalsAgainst = document.getElementById('media-goals-against');
+        const labelMediaGoals = document.getElementById('media-goals');
+        const labelMediaTotalShotsFavor = document.getElementById('media-total-shots-favor');
+        const labelMediaTotalShotsAgainst = document.getElementById('media-total-shots-against');
+        const labelMediaTotalShots = document.getElementById('media-total-shots');
+        const labelMediaTotalShotsTargetFavor = document.getElementById('media-total-shots-target-favor');
+        const labelMediaTotalShotsTargetAgainst = document.getElementById('media-total-shots-target-against');
+        const labelMediaTotalShotsTarget = document.getElementById('media-total-shots-target');
+        const label15mAllGoals = document.getElementById('15m-all-goals');
+
+
+        const labelTeamsAnalyzedAway = document.getElementById('teams-analyzed-away');
+        const labelGamesAnalyzedAway = document.getElementById('number-games-analyzed-away');
+        const labelFailedAnalysesAway = document.getElementById('failed-analyses-away');
+        const labelMediaCornersFavorAway = document.getElementById('media-corners-favor-away');
+        const labelMediaCornersAgainstAway = document.getElementById('media-corners-against-away');
+        const labelMediaCornersAway = document.getElementById('media-corners-away');
+        const labelMediaGoalsFavorAway = document.getElementById('media-goals-favor-away');
+        const labelMediaGoalsAgainstAway = document.getElementById('media-goals-against-away');
+        const labelMediaGoalsAway = document.getElementById('media-goals-away');
+        const labelMediaTotalShotsFavorAway = document.getElementById('media-total-shots-favor-away');
+        const labelMediaTotalShotsAgainstAway = document.getElementById('media-total-shots-against-away');
+        const labelMediaTotalShotsAway = document.getElementById('media-total-shots-away');
+        const labelMediaTotalShotsTargetFavorAway = document.getElementById('media-total-shots-target-favor-away');
+        const labelMediaTotalShotsTargetAgainstAway = document.getElementById('media-total-shots-target-against-away');
+        const labelMediaTotalShotsTargetAway = document.getElementById('media-total-shots-target-away');
+        const label15mAllGoalsAway = document.getElementById('15m-all-goals-away');
+
+        const labelTeamsAnalyzedMedia = document.getElementById('teams-analyzed-media');
+        const labelGamesAnalyzedMedia = document.getElementById('number-games-analyzed-media');
+        const labelFailedAnalysesMedia = document.getElementById('failed-analyses-media');
+        const labelMediaCornersFavorMedia = document.getElementById('media-corners-favor-media');
+        const labelMediaCornersAgainstMedia = document.getElementById('media-corners-against-media');
+        const labelMediaCornersMedia = document.getElementById('media-corners-media');
+        const labelMediaGoalsFavorMedia = document.getElementById('media-goals-favor-media');
+        const labelMediaGoalsAgainstMedia = document.getElementById('media-goals-against-media');
+        const labelMediaGoalsMedia = document.getElementById('media-goals-media');
+        const labelMediaTotalShotsFavorMedia = document.getElementById('media-total-shots-favor-media');
+        const labelMediaTotalShotsAgainstMedia = document.getElementById('media-total-shots-against-media');
+        const labelMediaTotalShotsMedia = document.getElementById('media-total-shots-media');
+        const labelMediaTotalShotsTargetFavorMedia = document.getElementById('media-total-shots-target-favor-media');
+        const labelMediaTotalShotsTargetAgainstMedia = document.getElementById('media-total-shots-target-against-media');
+        const labelMediaTotalShotsTargetMedia = document.getElementById('media-total-shots-target-media');
+        const label15mAllGoalsMedia = document.getElementById('15m-all-goals-media');
+
 
         // Update teams dropdown when country changes
         countrySelect.addEventListener('change', function () {
@@ -525,11 +811,39 @@
             const team = teamSelect.options[teamSelect.selectedIndex]?.text || "Not selected";
             const games = gamesSelect.value;
 
-            if (country && team !== "Not selected" && games) {
+            if (countrySelect.selectedIndex && teamSelect.selectedIndex && games) {
+                // if (country && team !== "Not selected" && games) {
                 commandPreview.textContent = `node flashcore.js '${team}' Soccer '${country}' ${games}`;
             } else {
                 commandPreview.textContent = "Please select a country, team, and number of games";
             }
+        }
+
+        function calculateAverageArray(arr1, arr2) {
+            // Check if arrays have the same length
+            if (arr1.length !== arr2.length) {
+                throw new Error('Arrays must have the same length');
+            }
+
+            const result = [];
+
+            for (let i = 0; i < arr1.length; i++) {
+                let mediaPosition = (parseFloat(arr1[i]) + parseFloat(arr2[i])) / 2;
+                
+                result.push(mediaPosition.toFixed(2));
+            }
+
+            return result;
+        }
+
+        
+        async function runHandicap() {
+
+            // Construct the command with selected values
+            const command = `node handicap.js`;
+
+            // Call the existing runCommand function
+            await runCommand(command);
         }
 
         // Function to run command with selected values
@@ -610,21 +924,61 @@
             }
 
         }
-        async function newRightButton() {
 
-
+        async function teamHome() {
 
             try {
-                // Load JSON file from server
-                const response = await fetch('cornerData.json');
-                const data = await response.json();
+                var data = null;
+                const country = countrySelect.options[countrySelect.selectedIndex]?.text;
+                const team = teamSelect.options[teamSelect.selectedIndex]?.text;
 
+                labelTeamsAnalyzed.textContent = null;
+                labelGamesAnalyzed.textContent = null;
+                labelFailedAnalyses.textContent = null;
+                labelMediaCornersFavor.textContent = null;
+                labelMediaCornersAgainst.textContent = null;
+                labelMediaCorners.textContent = null;
+                labelMediaGoalsFavor.textContent = null;
+                labelMediaGoalsAgainst.textContent = null;
+                labelMediaGoals.textContent = null;
+
+                labelMediaTotalShotsFavor.textContent = null;
+                labelMediaTotalShotsAgainst.textContent = null;
+                labelMediaTotalShots.textContent = null;
+                labelMediaTotalShotsTargetFavor.textContent = null;
+                labelMediaTotalShotsTargetAgainst.textContent = null;
+                labelMediaTotalShotsTarget.textContent = null;
+                label15mAllGoals.textContent = null;
+
+                console.log("countrySelect.selectedIndex :", countrySelect.selectedIndex);
+                console.log("teamSelect.selectedIndex :", teamSelect.selectedIndex);
+
+                if (countrySelect.selectedIndex === 0 || teamSelect.selectedIndex === 0) {
+                    document.getElementById('output').innerHTML = 'Error: Please select a country, team.';
+                    return;
+                }
+
+                // Construct the command with selected values
+                const fileTeam = `${team}.json`;
+
+
+                console.log("Team :", team);
+                console.log("fileTeam :", fileTeam);
+
+                // Load JSON file from server
+                // const response = await fetch('cornerData.json');
+                const response = await fetch(fileTeam);
+                if (response.status === 404) {
+                    document.getElementById('output').innerHTML = fileTeam + ' not exist';
+                    return;
+                }
+
+                data = await response.json();
 
                 // Access specific values
                 console.log("Loaded data:", data);
 
                 document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
-
 
                 labelTeamsAnalyzed.textContent = data.teamAnalyze;
                 labelGamesAnalyzed.textContent = data.nGamesAnalyze;
@@ -632,6 +986,201 @@
                 labelMediaCornersFavor.textContent = data.mediaCornersFavor
                 labelMediaCornersAgainst.textContent = data.mediaCornersAgainst
                 labelMediaCorners.textContent = data.mediaCorners
+                labelMediaGoalsFavor.textContent = data.mediaGoalsFavor;
+                labelMediaGoalsAgainst.textContent = data.mediaGoalsAgainst;
+                labelMediaGoals.textContent = data.mediaGoals;
+
+                labelMediaTotalShotsFavor.textContent = data.mediaTotalShotsFavor;
+                labelMediaTotalShotsAgainst.textContent = data.mediaTotalShotsAgainst;
+                labelMediaTotalShots.textContent = data.mediaTotalShots;
+                labelMediaTotalShotsTargetFavor.textContent = data.mediaTotalShotsTargetFavor;
+                labelMediaTotalShotsTargetAgainst.textContent = data.mediaTotalShotsTargetAgainst;
+                labelMediaTotalShotsTarget.textContent = data.mediaTotalShotsTarget;
+                label15mAllGoals.textContent = data.vec15mAllGoals;
+
+
+            } catch (error) {
+                console.log(`Error: ${error.message}`);
+            }
+
+        }
+
+
+        async function teamAway() {
+
+            try {
+                var data = null;
+                const country = countrySelect.options[countrySelect.selectedIndex]?.text;
+                const team = teamSelect.options[teamSelect.selectedIndex]?.text;
+
+                labelTeamsAnalyzedAway.textContent = null;
+                labelGamesAnalyzedAway.textContent = null;
+                labelFailedAnalysesAway.textContent = null;
+                labelMediaCornersFavorAway.textContent = null;
+                labelMediaCornersAgainstAway.textContent = null;
+                labelMediaCornersAway.textContent = null;
+                labelMediaGoalsFavorAway.textContent = null;
+                labelMediaGoalsAgainstAway.textContent = null;
+                labelMediaGoalsAway.textContent = null;
+
+                labelMediaTotalShotsFavorAway.textContent = null;
+                labelMediaTotalShotsAgainstAway.textContent = null;
+                labelMediaTotalShotsAway.textContent = null;
+                labelMediaTotalShotsTargetFavorAway.textContent = null;
+                labelMediaTotalShotsTargetAgainstAway.textContent = null;
+                labelMediaTotalShotsTargetAway.textContent = null;
+                label15mAllGoalsAway.textContent = null;
+
+                console.log("countrySelect.selectedIndex :", countrySelect.selectedIndex);
+                console.log("teamSelect.selectedIndex :", teamSelect.selectedIndex);
+
+                if (countrySelect.selectedIndex === 0 || teamSelect.selectedIndex === 0) {
+                    document.getElementById('output').innerHTML = 'Error: Please select a country, team.';
+                    return;
+                }
+
+                // Construct the command with selected values
+                const fileTeam = `${team}.json`;
+
+
+                console.log("Team :", team);
+                console.log("fileTeam :", fileTeam);
+
+                // Load JSON file from server
+                // const response = await fetch('cornerData.json');
+                const response = await fetch(fileTeam);
+                if (response.status === 404) {
+                    document.getElementById('output').innerHTML = fileTeam + ' not exist';
+                    return;
+                }
+
+                data = await response.json();
+
+                // Access specific values
+                console.log("Loaded data:", data);
+
+                document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
+
+                labelTeamsAnalyzedAway.textContent = data.teamAnalyze;
+                labelGamesAnalyzedAway.textContent = data.nGamesAnalyze;
+                labelFailedAnalysesAway.textContent = data.nFailedAnalyses;
+                labelMediaCornersFavorAway.textContent = data.mediaCornersFavor
+                labelMediaCornersAgainstAway.textContent = data.mediaCornersAgainst
+                labelMediaCornersAway.textContent = data.mediaCorners
+                labelMediaGoalsFavorAway.textContent = data.mediaGoalsFavor;
+                labelMediaGoalsAgainstAway.textContent = data.mediaGoalsAgainst;
+                labelMediaGoalsAway.textContent = data.mediaGoals;
+
+                labelMediaTotalShotsFavorAway.textContent = data.mediaTotalShotsFavor;
+                labelMediaTotalShotsAgainstAway.textContent = data.mediaTotalShotsAgainst;
+                labelMediaTotalShotsAway.textContent = data.mediaTotalShots;
+                labelMediaTotalShotsTargetFavorAway.textContent = data.mediaTotalShotsTargetFavor;
+                labelMediaTotalShotsTargetAgainstAway.textContent = data.mediaTotalShotsTargetAgainst;
+                labelMediaTotalShotsTargetAway.textContent = data.mediaTotalShotsTarget;
+                label15mAllGoalsAway.textContent = data.vec15mAllGoals
+
+
+            } catch (error) {
+                console.log(`Error: ${error.message}`);
+            }
+
+        }
+
+
+
+
+        async function teamMedia() {
+
+            try {
+                var data = null;
+                var dataAway = null;
+
+                // const country = countrySelect.options[countrySelect.selectedIndex]?.text;
+                // const team = teamSelect.options[teamSelect.selectedIndex]?.text;
+
+                const team = labelTeamsAnalyzed.innerText;
+                const teamAway = labelTeamsAnalyzedAway.innerText;
+
+                labelTeamsAnalyzedMedia.textContent = null;
+                labelGamesAnalyzedMedia.textContent = null;
+                labelFailedAnalysesMedia.textContent = null;
+                labelMediaCornersFavorMedia.textContent = null;
+                labelMediaCornersAgainstMedia.textContent = null;
+                labelMediaCornersMedia.textContent = null;
+                labelMediaGoalsFavorMedia.textContent = null;
+                labelMediaGoalsAgainstMedia.textContent = null;
+                labelMediaGoalsMedia.textContent = null;
+
+                labelMediaTotalShotsFavorMedia.textContent = null;
+                labelMediaTotalShotsAgainstMedia.textContent = null;
+                labelMediaTotalShotsMedia.textContent = null;
+                labelMediaTotalShotsTargetFavorMedia.textContent = null;
+                labelMediaTotalShotsTargetAgainstMedia.textContent = null;
+                labelMediaTotalShotsTargetMedia.textContent = null;
+                label15mAllGoalsMedia.textContent = null;
+
+                // console.log("countrySelect.selectedIndex :", countrySelect.selectedIndex);
+                // console.log("teamSelect.selectedIndex :", teamSelect.selectedIndex);
+
+                // if (countrySelect.selectedIndex === 0 || teamSelect.selectedIndex === 0) {
+                //     document.getElementById('output').innerHTML = 'Error: Please select a country, team.';
+                //     return;
+                // }
+
+                // Construct the command with selected values
+                var fileTeam = `${team}.json`;
+                var fileTeamAway = `${teamAway}.json`;
+
+
+                console.log("Team :", team);
+                console.log("fileTeam :", fileTeam);
+                console.log("teamAway :", teamAway);
+                console.log("fileTeamAway :", fileTeamAway);
+
+                // Load JSON file from server
+                // const response = await fetch('cornerData.json');
+                let response = await fetch(fileTeam);
+                if (response.status === 404) {
+                    document.getElementById('output').innerHTML = fileTeam + ' not exist';
+                    return;
+                }
+
+                data = await response.json();
+
+                response = await fetch(fileTeamAway);
+                if (response.status === 404) {
+                    document.getElementById('output').innerHTML = fileTeamAway + ' not exist';
+                    return;
+                }
+
+                dataAway = await response.json();
+
+                // Access specific values
+                console.log("Loaded data:", data);
+                console.log("Loaded dataAway:", dataAway);
+
+                document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
+                document.getElementById('output').innerHTML += JSON.stringify(dataAway, null, 2);
+
+                labelTeamsAnalyzedMedia.textContent = data.teamAnalyze + ' vs ' + dataAway.teamAnalyze;
+                labelGamesAnalyzedMedia.textContent = data.nGamesAnalyze;
+                labelFailedAnalysesMedia.textContent = data.nFailedAnalyses;
+                labelMediaCornersFavorMedia.textContent = (parseFloat(data.mediaCornersFavor) + parseFloat(dataAway.mediaCornersFavor)) / 2;
+                labelMediaCornersAgainstMedia.textContent = (parseFloat(data.mediaCornersAgainst) + parseFloat(dataAway.mediaCornersAgainst)) / 2;
+                labelMediaCornersMedia.textContent = (parseFloat(data.mediaCorners) + parseFloat(dataAway.mediaCorners)) / 2;
+                labelMediaGoalsFavorMedia.textContent = (parseFloat(data.mediaGoalsFavor) + parseFloat(dataAway.mediaGoalsFavor)) / 2;
+                labelMediaGoalsAgainstMedia.textContent = (parseFloat(data.mediaGoalsAgainst) + parseFloat(dataAway.mediaGoalsAgainst)) / 2;
+                labelMediaGoalsMedia.textContent = (parseFloat(data.mediaGoals) + parseFloat(dataAway.mediaGoals)) / 2;
+
+                labelMediaTotalShotsFavorMedia.textContent = (parseFloat(data.mediaTotalShotsFavor) + parseFloat(dataAway.mediaTotalShotsFavor)) / 2;
+                labelMediaTotalShotsAgainstMedia.textContent = (parseFloat(data.mediaTotalShotsAgainst) + parseFloat(dataAway.mediaTotalShotsAgainst)) / 2;
+                labelMediaTotalShotsMedia.textContent = (parseFloat(data.mediaTotalShots) + parseFloat(dataAway.mediaTotalShots)) / 2;
+                labelMediaTotalShotsTargetFavorMedia.textContent = (parseFloat(data.mediaTotalShotsTargetFavor) + parseFloat(dataAway.mediaTotalShotsTargetFavor)) / 2;
+                labelMediaTotalShotsTargetAgainstMedia.textContent = (parseFloat(data.mediaTotalShotsTargetAgainst) + parseFloat(dataAway.mediaTotalShotsTargetAgainst)) / 2;
+                labelMediaTotalShotsTargetMedia.textContent = (parseFloat(data.mediaTotalShotsTarget) + parseFloat(dataAway.mediaTotalShotsTarget)) / 2;
+                label15mAllGoalsMedia.textContent = calculateAverageArray(data.vec15mAllGoals,dataAway.vec15mAllGoals);
+
+                
 
             } catch (error) {
                 console.log(`Error: ${error.message}`);

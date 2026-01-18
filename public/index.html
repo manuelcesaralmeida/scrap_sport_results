@@ -170,6 +170,8 @@
             <option value="austria">Austria</option>
             <option value="belgium">Belgium</option>
             <option value="brazil">Brazil</option>
+            <option value="brazil_carioca">Brazil Carioca</option>
+            <option value="brazil_paulista">Brazil Paulista</option>
             <option value="canada">Canada</option>
             <option value="chile">Chile</option>
             <option value="colombia">Colombia</option>
@@ -340,159 +342,14 @@
         <p>Number of Games: <span id="selected-games" class="highlight">1</span></p>
     </div>
 
-    <!--div class="statistics_home style="float: right;"">
-        <h3>Statistics Team Home:</h3>
-        <p>Teams analyzed : <span id="teams-analyzed" class="highlight_blue"></span></p>
-        <p>Games Analyzed : <span id="number-games-analyzed" class="highlight_blue"></span></p>
-        <p>Failed analyses : <span id="failed-analyses" class="highlight_blue"></span></p>
-        <p>Media Corners Favor : <span id="media-corners-favor" class="highlight_blue"></span></p>
-        <p>Media Corners Against : <span id="media-corners-against" class="highlight_blue"></span></p>
-        <p>Media Corners : <span id="media-corners" class="highlight_blue"></span></p>
 
-        <p>Media Goals Favor : <span id="media-goals-favor" class="highlight_blue"></span></p>
-        <p>Media Goals Against : <span id="media-goals-against" class="highlight_blue"></span></p>
-        <p>Media Goals : <span id="media-goals" class="highlight_blue"></span></p>
-
-        <p>Media Total Shots Favor : <span id="media-total-shots-favor" class="highlight_blue"></span></p>
-        <p>MediaTotalShots Against : <span id="media-total-shots-against" class="highlight_blue"></span></p>
-        <p>Media Total Shots : <span id="media-total-shots" class="highlight_blue"></span></p>
-        <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor" class="highlight_blue"></span></p>
-        <p>Media Total Shots Target Against : <span id="media-total-shots-target-against" class="highlight_blue"></span></p>
-        <p>Media Total Shots Target : <span id="media-total-shots-target" class="highlight_blue"></span></p>
-
-        <button onclick="teamHome()" class="custom-button">Team Home : </button>
-    </div>
-
-    <div class="statistics_away" style="float: right;">
-        <h3>Statistics Team Away:</h3>
-        <p>Teams analyzed : <span id="teams-analyzed-away" class="highlight_blue"></span></p>
-        <p>Games Analyzed : <span id="number-games-analyzed-away" class="highlight_blue"></span></p>
-        <p>Failed analyses : <span id="failed-analyses-away" class="highlight_blue"></span></p>
-        <p>Media Corners Favor : <span id="media-corners-favor-away" class="highlight_blue"></span></p>
-        <p>Media Corners Against : <span id="media-corners-against-away" class="highlight_blue"></span></p>
-        <p>Media Corners : <span id="media-corners-away" class="highlight_blue"></span></p>
-    
-        <p>Media Goals Favor : <span id="media-goals-favor-away" class="highlight_blue"></span></p>
-        <p>Media Goals Against : <span id="media-goals-against-away" class="highlight_blue"></span></p>
-        <p>Media Goals : <span id="media-goals-away" class="highlight_blue"></span></p>
-    
-        <p>Media Total Shots Favor : <span id="media-total-shots-favor-away" class="highlight_blue"></span></p>
-        <p>MediaTotalShots Against : <span id="media-total-shots-against-away" class="highlight_blue"></span></p>
-        <p>Media Total Shots : <span id="media-total-shots-away" class="highlight_blue"></span></p>
-        <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor-away" class="highlight_blue"></span></p>
-        <p>Media Total Shots Target Against : <span id="media-total-shots-target-against-away" class="highlight_blue"></span></p>
-        <p>Media Total Shots Target : <span id="media-total-shots-target-away" class="highlight_blue"></span></p>
-    
-        <button onclick="teamAway()" class="custom-button">Team Away : </button>
-    </div-->
-
-    <!--div style="display: flex;">
-        <div class="statistics_home">
-            <h3>Statistics Team Home:</h3>
-            <p>Teams analyzed : <span id="teams-analyzed" class="highlight_blue"></span></p>
-            <p>Games Analyzed : <span id="number-games-analyzed" class="highlight_blue"></span></p>
-            <p>Failed analyses : <span id="failed-analyses" class="highlight_blue"></span></p>
-            <p>Media Corners Favor : <span id="media-corners-favor" class="highlight_blue"></span></p>
-            <p>Media Corners Against : <span id="media-corners-against" class="highlight_blue"></span></p>
-            <p>Media Corners : <span id="media-corners" class="highlight_blue"></span></p>
-    
-            <p>Media Goals Favor : <span id="media-goals-favor" class="highlight_blue"></span></p>
-            <p>Media Goals Against : <span id="media-goals-against" class="highlight_blue"></span></p>
-            <p>Media Goals : <span id="media-goals" class="highlight_blue"></span></p>
-    
-            <p>Media Total Shots Favor : <span id="media-total-shots-favor" class="highlight_blue"></span></p>
-            <p>MediaTotalShots Against : <span id="media-total-shots-against" class="highlight_blue"></span></p>
-            <p>Media Total Shots : <span id="media-total-shots" class="highlight_blue"></span></p>
-            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor" class="highlight_blue"></span></p>
-            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against" class="highlight_blue"></span></p>
-            <p>Media Total Shots Target : <span id="media-total-shots-target" class="highlight_blue"></span></p>
-    
-            <button onclick="teamHome()" class="custom-button">Team Home : </button>
-        </div>
-    
-        <div class="statistics_away">
-            <h3>Statistics Team Away:</h3>
-            <p>Teams analyzed : <span id="teams-analyzed-away" class="highlight_blue"></span></p>
-            <p>Games Analyzed : <span id="number-games-analyzed-away" class="highlight_blue"></span></p>
-            <p>Failed analyses : <span id="failed-analyses-away" class="highlight_blue"></span></p>
-            <p>Media Corners Favor : <span id="media-corners-favor-away" class="highlight_blue"></span></p>
-            <p>Media Corners Against : <span id="media-corners-against-away" class="highlight_blue"></span></p>
-            <p>Media Corners : <span id="media-corners-away" class="highlight_blue"></span></p>
-    
-            <p>Media Goals Favor : <span id="media-goals-favor-away" class="highlight_blue"></span></p>
-            <p>Media Goals Against : <span id="media-goals-against-away" class="highlight_blue"></span></p>
-            <p>Media Goals : <span id="media-goals-away" class="highlight_blue"></span></p>
-    
-            <p>Media Total Shots Favor : <span id="media-total-shots-favor-away" class="highlight_blue"></span></p>
-            <p>MediaTotalShots Against : <span id="media-total-shots-against-away" class="highlight_blue"></span></p>
-            <p>Media Total Shots : <span id="media-total-shots-away" class="highlight_blue"></span></p>
-            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor-away" class="highlight_blue"></span></p>
-            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against-away" class="highlight_blue"></span></p>
-            <p>Media Total Shots Target : <span id="media-total-shots-target-away" class="highlight_blue"></span></p>
-    
-            <button onclick="teamAway()" class="custom-button">Team Away : </button>
-        </div>
-    </div-->
-
-    <!--div style="display: flex; align-items: flex-start; gap: 20px;">
-
-        <div class="statistics_home" style="flex: 1;">
-            <h3>Statistics Team Home:</h3>
-            <p>Teams analyzed : <span id="teams-analyzed" class="highlight_blue"></span></p>
-            <p>Games Analyzed : <span id="number-games-analyzed" class="highlight_blue"></span></p>
-            <p>Failed analyses : <span id="failed-analyses" class="highlight_blue"></span></p>
-            <p>Media Corners Favor : <span id="media-corners-favor" class="highlight_blue"></span></p>
-            <p>Media Corners Against : <span id="media-corners-against" class="highlight_blue"></span></p>
-            <p>Media Corners : <span id="media-corners" class="highlight_blue"></span></p>
-
-            <p>Media Goals Favor : <span id="media-goals-favor" class="highlight_blue"></span></p>
-            <p>Media Goals Against : <span id="media-goals-against" class="highlight_blue"></span></p>
-            <p>Media Goals : <span id="media-goals" class="highlight_blue"></span></p>
-
-            <p>Media Total Shots Favor : <span id="media-total-shots-favor" class="highlight_blue"></span></p>
-            <p>MediaTotalShots Against : <span id="media-total-shots-against" class="highlight_blue"></span></p>
-            <p>Media Total Shots : <span id="media-total-shots" class="highlight_blue"></span></p>
-            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor" class="highlight_blue"></span>
-            </p>
-            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against"
-                    class="highlight_blue"></span></p>
-            <p>Media Total Shots Target : <span id="media-total-shots-target" class="highlight_blue"></span></p>
-
-            <button onclick="teamHome()" class="custom-button">Team Home : </button>
-        </div>
-
-
-
-        <div class="statistics_away" style="flex: 1;">
-            <h3>Statistics Team Away:</h3>
-            <p>Teams analyzed : <span id="teams-analyzed-away" class="highlight_blue"></span></p>
-            <p>Games Analyzed : <span id="number-games-analyzed-away" class="highlight_blue"></span></p>
-            <p>Failed analyses : <span id="failed-analyses-away" class="highlight_blue"></span></p>
-            <p>Media Corners Favor : <span id="media-corners-favor-away" class="highlight_blue"></span></p>
-            <p>Media Corners Against : <span id="media-corners-against-away" class="highlight_blue"></span></p>
-            <p>Media Corners : <span id="media-corners-away" class="highlight_blue"></span></p>
-
-            <p>Media Goals Favor : <span id="media-goals-favor-away" class="highlight_blue"></span></p>
-            <p>Media Goals Against : <span id="media-goals-against-away" class="highlight_blue"></span></p>
-            <p>Media Goals : <span id="media-goals-away" class="highlight_blue"></span></p>
-
-            <p>Media Total Shots Favor : <span id="media-total-shots-favor-away" class="highlight_blue"></span></p>
-            <p>MediaTotalShots Against : <span id="media-total-shots-against-away" class="highlight_blue"></span></p>
-            <p>Media Total Shots : <span id="media-total-shots-away" class="highlight_blue"></span></p>
-            <p>Media Total Shots Target Favor : <span id="media-total-shots-target-favor-away"
-                    class="highlight_blue"></span></p>
-            <p>Media Total Shots Target Against : <span id="media-total-shots-target-against-away"
-                    class="highlight_blue"></span></p>
-            <p>Media Total Shots Target : <span id="media-total-shots-target-away" class="highlight_blue"></span></p>
-
-            <button onclick="teamAway()" class="custom-button">Team Away : </button>
-        </div>
-    </div-->
 
     <div style="display: flex; align-items: flex-start; gap: 20px;">
         <!-- Left side: Home Statistics -->
         <div class="statistics_home" style="flex: 1;">
             <h3>Statistics Team Home:</h3>
+            <p>Country : <span id="country-home" class="highlight_blue"></span></p>
+            <p>Date Last Game : <span id="date-last-game" class="highlight_blue"></span></p>
             <p>Teams analyzed : <span id="teams-analyzed" class="highlight_blue"></span></p>
             <p>Games Analyzed : <span id="number-games-analyzed" class="highlight_blue"></span></p>
             <p>Failed analyses : <span id="failed-analyses" class="highlight_blue"></span></p>
@@ -522,6 +379,8 @@
         <!-- Middle: Away Statistics -->
         <div class="statistics_away" style="flex: 1;">
             <h3>Statistics Team Away:</h3>
+            <p>Country : <span id="country-away" class="highlight_blue"></span></p>
+            <p>Date Last Game : <span id="date-last-game-away" class="highlight_blue"></span></p>
             <p>Teams analyzed : <span id="teams-analyzed-away" class="highlight_blue"></span></p>
             <p>Games Analyzed : <span id="number-games-analyzed-away" class="highlight_blue"></span></p>
             <p>Failed analyses : <span id="failed-analyses-away" class="highlight_blue"></span></p>
@@ -551,6 +410,8 @@
         <!-- Right side: Media Statistics -->
         <div class="statistics_media" style="flex: 1;">
             <h3>Statistics Team Media:</h3>
+            <p>Country : <span id="country-media" class="highlight_blue"></span></p>
+            <p>Date Last Game : <span id="date-last-game-media" class="highlight_blue"></span></p>
             <p>Teams analyzed : <span id="teams-analyzed-media" class="highlight_blue"></span></p>
             <p>Games Analyzed : <span id="number-games-analyzed-media" class="highlight_blue"></span></p>
             <p>Failed analyses : <span id="failed-analyses-media" class="highlight_blue"></span></p>
@@ -616,6 +477,8 @@
             austria: ["Salzburg", "SK Rapid", "Hartberg", "LASK", "Sturm Graz", "Austria Vienna", "Wolfsberger AC", "Altach", "Ried", "Tirol", "Grazer AK", "BW Linz"],
             belgium: ["Royale Union SG", "Club Brugge KV", "Anderlecht", "St. Truiden", "Gent", "KV Mechelen", "Genk", "Waregem", "Charleroi", "St. Liege", "RAAL La Louviere", "Westerlo", "Leuven", "Antwerp", "Cercle Brugge KSV", "Dender"],
             brazil: ["Flamengo RJ", "Palmeiras", "Cruzeiro", "Mirassol", "Bahia", "Botafogo RJ", "Fluminense", "Bragantino", "Sao Paulo", "Atletico-MG", "Vasco", "Ceara", "Corinthians", "Gremio", "Internacional", "Santos", "Vitoria", "Juventude", "Fortaleza", "Sport Recife"],
+            brazil_carioca: ["Volta Redonda","Vasco","Fluminense","Bangu","Portuguesa RJ","Sampaio Correa FE","Nova Iguacu","Botafogo RJ","Madureira","Boavista","Flamengo RJ","Marica"],
+            brazil_paulista: ["Bragantino", "Novorizontino", "Palmeiras", "Capivariano", "Primavera", "Velo Clube", "Sao Bernardo", "Mirassol", "Corinthians", "Santos", "Portuguesa", "Sao Paulo", "Botafogo SP", "Noroeste", "Guarani", "Ponte Preta"],
             canada: ["Vancouver Whitecaps"],
             chile: ["U. De Concepcion", "Copiapo", "Cobreloa", "San Marcos de Arica", "Antofagasta", "D. Concepcion", "Rangers", "S. Wanderers", "San Luis", "Magallanes", "Recoleta", "Deportes Temuco", "Curico Unido", "CD Santa Cruz", "San Felipe", "S. Morning"],
             colombia: ["Deportes Tolima", "Ind. Medellin", "Atl. Nacional", "Santa Fe", "America De Cali", "Junior", "Bucaramanga", "Millonarios", "Once Caldas", "Alianza", "Fortaleza", "Aguilas", "Dep. Pasto", "Pereira", "Dep. Cali", "Llaneros", "Envigado", "Chico", "U. Magdalena", "La Equidad"],
@@ -640,7 +503,7 @@
             jamaica: ["Montego Bay", "Portmore", "Racing United", "Cavalier", "Waterhouse", "Tivoli", "Harbour View", "Mount Pleasant", "Chapelton", "Dunbeholden", "Treasure Beach", "Arnett Gardens", "Molynes", "Spanish Town Police"],
             japan: ["Tokyo Giants", "Osaka Tigers", "Kyoto Sanga", "Yokohama Marinos", "Nagoya Grampus"],
             kazakhstan: ["Kairat Almaty", "FC Astana", "Tobol", "Yelimay Semey", "Aktobe", "Zhenis", "Ordabasy", "Okzhetpes", "Kyzylzhar", "Ulytau", "Kaisar Kyzylorda", "Zhetysu Taldykorgan", "Atyrau", "Turan"],
-            mexico: ["Santos Laguna","Monterrey","Cruz Azul","Atlas","Atl. San Luis","Guadalajara Chivas","Necaxa","Pachuca","Toluca","Club America","Puebla","Tigres UANL","UNAM Pumas","Queretaro","Club Tijuana","Club Leon","Juarez","Mazatlan FC"],
+            mexico: ["Santos Laguna", "Monterrey", "Cruz Azul", "Atlas", "Atl. San Luis", "Guadalajara Chivas", "Necaxa", "Pachuca", "Toluca", "Club America", "Puebla", "Tigres UANL", "UNAM Pumas", "Queretaro", "Club Tijuana", "Club Leon", "Juarez", "Mazatlan FC"],
             montenegro: ["Sutjeska", "Mornar Bar", "Decic", "Jezero", "Petrovac", "Buducnost", "Mladost DG", "Arsenal Tivat", "Bokelj", "Jedinstvo"],
             netherlands: ["PSV", "Feyenoord", "AZ Alkmaar", "Ajax", "Utrecht", "Groningen", "Nijmegen", "Twente", "G.A. Eagles", "Sittard", "Sparta Rotterdam", "Heerenveen", "FC Volendam", "NAC Breda", "Zwolle", "Excelsior", "Telstar", "Heracles"],
             netherlands_2: ["Den Haag", "Cambuur", "De Graafschap", "Jong PSV", "Den Bosch", "Willem II", "Roda", "Almere City", "Waalwijk", "FC Emmen", "Dordrecht", "Venlo", "Jong Utrecht", "Helmond", "Eindhoven FC", "Jong AZ", "Oss", "Maastricht", "Jong Ajax", "Vitesse"],
@@ -681,6 +544,9 @@
         const commandPreview = document.getElementById('command-preview');
         const runCommandBtn = document.getElementById('run-command-btn');
 
+
+        const labelCountry = document.getElementById('country-home');
+        const labelDateLastGame = document.getElementById('date-last-game');
         const labelTeamsAnalyzed = document.getElementById('teams-analyzed');
         const labelGamesAnalyzed = document.getElementById('number-games-analyzed');
         const labelFailedAnalyses = document.getElementById('failed-analyses');
@@ -699,6 +565,8 @@
         const label15mAllGoals = document.getElementById('15m-all-goals');
 
 
+        const labelCountryAway = document.getElementById('country-away');
+        const labelDateLastGameAway = document.getElementById('date-last-game-away');
         const labelTeamsAnalyzedAway = document.getElementById('teams-analyzed-away');
         const labelGamesAnalyzedAway = document.getElementById('number-games-analyzed-away');
         const labelFailedAnalysesAway = document.getElementById('failed-analyses-away');
@@ -716,6 +584,10 @@
         const labelMediaTotalShotsTargetAway = document.getElementById('media-total-shots-target-away');
         const label15mAllGoalsAway = document.getElementById('15m-all-goals-away');
 
+
+
+        const labelCountryMedia = document.getElementById('country-media');
+        const labelDateLastGameMedia = document.getElementById('date-last-game-media');
         const labelTeamsAnalyzedMedia = document.getElementById('teams-analyzed-media');
         const labelGamesAnalyzedMedia = document.getElementById('number-games-analyzed-media');
         const labelFailedAnalysesMedia = document.getElementById('failed-analyses-media');
@@ -829,14 +701,14 @@
 
             for (let i = 0; i < arr1.length; i++) {
                 let mediaPosition = (parseFloat(arr1[i]) + parseFloat(arr2[i])) / 2;
-                
+
                 result.push(mediaPosition.toFixed(2));
             }
 
             return result;
         }
 
-        
+
         async function runHandicap() {
 
             // Construct the command with selected values
@@ -932,6 +804,8 @@
                 const country = countrySelect.options[countrySelect.selectedIndex]?.text;
                 const team = teamSelect.options[teamSelect.selectedIndex]?.text;
 
+                labelCountry.textContent = null;
+                labelDateLastGame.textContent = null;
                 labelTeamsAnalyzed.textContent = null;
                 labelGamesAnalyzed.textContent = null;
                 labelFailedAnalyses.textContent = null;
@@ -959,7 +833,8 @@
                 }
 
                 // Construct the command with selected values
-                const fileTeam = `${team}.json`;
+                // const fileTeam = `${team}.json`;
+                const fileTeam = `teams/${team}.json`;
 
 
                 console.log("Team :", team);
@@ -980,6 +855,8 @@
 
                 document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
 
+                labelCountry.textContent = data.country;
+                labelDateLastGame.textContent = data.dateLastGame;
                 labelTeamsAnalyzed.textContent = data.teamAnalyze;
                 labelGamesAnalyzed.textContent = data.nGamesAnalyze;
                 labelFailedAnalyses.textContent = data.nFailedAnalyses;
@@ -1013,6 +890,8 @@
                 const country = countrySelect.options[countrySelect.selectedIndex]?.text;
                 const team = teamSelect.options[teamSelect.selectedIndex]?.text;
 
+                labelCountryAway.textContent = null;
+                labelDateLastGameAway.textContent = null;
                 labelTeamsAnalyzedAway.textContent = null;
                 labelGamesAnalyzedAway.textContent = null;
                 labelFailedAnalysesAway.textContent = null;
@@ -1040,7 +919,8 @@
                 }
 
                 // Construct the command with selected values
-                const fileTeam = `${team}.json`;
+                // const fileTeam = `${team}.json`;
+                const fileTeam = `teams/${team}.json`;
 
 
                 console.log("Team :", team);
@@ -1061,6 +941,9 @@
 
                 document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
 
+
+                labelCountryAway.textContent = data.country;
+                labelDateLastGameAway.textContent = data.dateLastGame;
                 labelTeamsAnalyzedAway.textContent = data.teamAnalyze;
                 labelGamesAnalyzedAway.textContent = data.nGamesAnalyze;
                 labelFailedAnalysesAway.textContent = data.nFailedAnalyses;
@@ -1101,6 +984,8 @@
                 const team = labelTeamsAnalyzed.innerText;
                 const teamAway = labelTeamsAnalyzedAway.innerText;
 
+                labelCountryMedia.textContent = null;
+                labelDateLastGameMedia.textContent = null;
                 labelTeamsAnalyzedMedia.textContent = null;
                 labelGamesAnalyzedMedia.textContent = null;
                 labelFailedAnalysesMedia.textContent = null;
@@ -1128,8 +1013,10 @@
                 // }
 
                 // Construct the command with selected values
-                var fileTeam = `${team}.json`;
-                var fileTeamAway = `${teamAway}.json`;
+                // var fileTeam = `${team}.json`;
+                // var fileTeamAway = `${teamAway}.json`;
+                var fileTeam = `teams/${team}.json`;
+                var fileTeamAway = `teams/${team}.json`;
 
 
                 console.log("Team :", team);
@@ -1162,6 +1049,8 @@
                 document.getElementById('output').innerHTML = JSON.stringify(data, null, 2);
                 document.getElementById('output').innerHTML += JSON.stringify(dataAway, null, 2);
 
+                labelCountryMedia.textContent = data.country + ' vs ' + dataAway.country;
+                labelDateLastGameMedia.textContent = data.dateLastGame + ' vs ' + dataAway.dateLastGame;
                 labelTeamsAnalyzedMedia.textContent = data.teamAnalyze + ' vs ' + dataAway.teamAnalyze;
                 labelGamesAnalyzedMedia.textContent = data.nGamesAnalyze;
                 labelFailedAnalysesMedia.textContent = data.nFailedAnalyses;
@@ -1178,9 +1067,9 @@
                 labelMediaTotalShotsTargetFavorMedia.textContent = (parseFloat(data.mediaTotalShotsTargetFavor) + parseFloat(dataAway.mediaTotalShotsTargetFavor)) / 2;
                 labelMediaTotalShotsTargetAgainstMedia.textContent = (parseFloat(data.mediaTotalShotsTargetAgainst) + parseFloat(dataAway.mediaTotalShotsTargetAgainst)) / 2;
                 labelMediaTotalShotsTargetMedia.textContent = (parseFloat(data.mediaTotalShotsTarget) + parseFloat(dataAway.mediaTotalShotsTarget)) / 2;
-                label15mAllGoalsMedia.textContent = calculateAverageArray(data.vec15mAllGoals,dataAway.vec15mAllGoals);
+                label15mAllGoalsMedia.textContent = calculateAverageArray(data.vec15mAllGoals, dataAway.vec15mAllGoals);
 
-                
+
 
             } catch (error) {
                 console.log(`Error: ${error.message}`);

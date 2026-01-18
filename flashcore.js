@@ -2474,7 +2474,7 @@ function filterTeam(data, name, category, country) {
 
     };
 
-    const fileStatisticsTeam = 'public/' + teamAnalyze + '.json'
+    const fileStatisticsTeam = 'public/teams/' + teamAnalyze + '.json'
 
     // Write to JSON file
     fs.writeFile(fileStatisticsTeam, JSON.stringify(data, null, 2), (err) => {

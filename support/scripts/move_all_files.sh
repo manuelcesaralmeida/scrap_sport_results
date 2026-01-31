@@ -8,9 +8,9 @@ cd
 
 pwd
 
-echo "Waiting 100 seconds (press any key to continue early)..."
-read -t 100 -p "Press Enter to continue..."
-echo "Continuing..."
+#echo "Waiting 100 seconds (press any key to continue early)..."
+#read -t 100 -p "Press Enter to continue..."
+#echo "Continuing..."
 
 
 
@@ -21,7 +21,9 @@ cd /home/cesar/ces/bets/scrap_sport_results
 
 find . -name "*_Soccer_*" -exec cp {} report \; -delete
 
-find . -name "handicap_*" -exec cp {} report \; -delete
+find . -name "handicap_*.txt" -exec cp {} report \; -delete
+
+find . -name "home_away_*.txt" -exec cp {} report \; -delete
 
 find . -name "events_*.json" -exec cp {} report \; -delete
 

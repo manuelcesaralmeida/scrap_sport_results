@@ -141,6 +141,8 @@ function calculatePercentage(vector, operator, message) {
     console.log(message);
     console.log(' '.repeat(60));
 
+    var vecResult = [];
+
     for (let i = 0; i <= 30; i++) {
 
         let result = null;
@@ -151,7 +153,7 @@ function calculatePercentage(vector, operator, message) {
         if (operator === '>') {
             result = calculatePercentageGreaterThan(vector, i);
         }
-        // var result = calculatePercentageGreaterThan(vecTotalCorners, 0);
+        vecResult.push(result);
 
 
         if (i < 10) {
@@ -160,8 +162,8 @@ function calculatePercentage(vector, operator, message) {
         else {
             console.log(`${message} ${i}  : ${result}%`);
         }
-
     }
+    return vecResult;
 }
 
 
@@ -1190,23 +1192,7 @@ function filterTeam(data, name, category, country) {
         vecHomeScore.push(matchStatus.homeScore);
         vecAwayScore.push(matchStatus.awayScore);
 
-        //         console.log('matchStatus.dateTime = ', matchStatus.dateTime);
-        // console.log('matchStatus.homeTeam = ', matchStatus.homeTeam);
-        // console.log('matchStatus.awayTeam = ', matchStatus.awayTeam);
-        // console.log('matchStatus.homeScore = ', matchStatus.homeScore);
-        // console.log('matchStatus.awayScore = ', matchStatus.awayScore);
-
-
-        // if (cornersFavor > cornersAgainst) {
-        //     vecCornersResult.push('V')
-
-        // }
-        // else if (cornersFavor === cornersAgainst) {
-        //     vecCornersResult.push('D')
-        // }
-        // else {
-        //     vecCornersResult.push('L')
-        // }
+        //----------------------------------------------------------  
 
         if (vecTotalCornersFavor[i] > vecTotalCornersAgainst[i]) {
             vecCornersResult.push('V')
@@ -1218,16 +1204,7 @@ function filterTeam(data, name, category, country) {
             vecCornersResult.push('L')
         }
         //----------------------------------------------------------                
-        // if (goalsFavor > goalsAgainst) {
-        //     vecGoalsResult.push('V')
 
-        // }
-        // else if (goalsFavor === goalsAgainst) {
-        //     vecGoalsResult.push('D')
-        // }
-        // else {
-        //     vecGoalsResult.push('L')
-        // }
 
         if (vecTotalGoalsFavor[i] > vecTotalGoalsAgainst[i]) {
             vecGoalsResult.push('V')
@@ -1279,236 +1256,32 @@ function filterTeam(data, name, category, country) {
 
     }
 
-    // console.log('                                                  ');
-    // console.log('--------------------------------------------------');
-    // console.log(`TEAM ANALYZE : ${teamAnalyze} - LAST ${nGamesAnalyze} GAMES`);
-    // console.log('✅ Calculate Corner Percentage Greater Than .... :');
-    // console.log('                                                  ');
 
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 0);
-    // console.log(`✅ Percentage of corners greater than 0  : ${result}%`);
+    var vecMajorTotalCorners = [];
+    var vecMinorTotalCorners = [];
+    var vecMajorTotalCornersFavor = [];
+    var vecMinorTotalCornersFavor = [];
+    var vecMajorTotalCornersAgainst = [];
+    var vecMinorTotalCornersAgainst = [];
 
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 1);
-    // console.log(`✅ Percentage of corners greater than 1  : ${result}%`);
 
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 2);
-    // console.log(`✅ Percentage of corners greater than 2  : ${result}%`);
+    vecMajorTotalCorners = calculatePercentage(vecTotalCorners, '>', '✅ Percentage of total corners greater than');
+    vecMinorTotalCorners = calculatePercentage(vecTotalCorners, '<', '✅ Percentage of total corners less than')
 
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 3);
-    // console.log(`✅ Percentage of corners greater than 3  : ${result}%`);
+    vecMajorTotalCornersFavor = calculatePercentage(vecTotalCornersFavor, '>', '✅ Percentage of corners favor greater than');
+    vecMinorTotalCornersFavor = calculatePercentage(vecTotalCornersFavor, '<', '✅ Percentage of corners favor less than');
 
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 4);
-    // console.log(`✅ Percentage of corners greater than 4  : ${result}%`);
+    vecMajorTotalCornersAgainst = calculatePercentage(vecTotalCornersAgainst, '>', '✅ Percentage of corners against greater than');
+    vecMinorTotalCornersAgainst = calculatePercentage(vecTotalCornersAgainst, '<', '✅ Percentage of corners against less than');
 
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 5);
-    // console.log(`✅ Percentage of corners greater than 5  : ${result}%`);
 
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 6);
-    // console.log(`✅ Percentage of corners greater than 6  : ${result}%`);
+    console.log(`vecMajorTotalCorners = ${vecMajorTotalCorners}`);
+    console.log(`vecMinorTotalCorners = ${vecMinorTotalCorners}`);
+    console.log(`vecMajorTotalCornersFavor = ${vecMajorTotalCornersFavor}`);
+    console.log(`vecMinorTotalCornersFavor = ${vecMinorTotalCornersFavor}`);
+    console.log(`vecMajorTotalCornersAgainst = ${vecMajorTotalCornersAgainst}`);
+    console.log(`vecMinorTotalCornersAgainst = ${vecMinorTotalCornersAgainst}`);
 
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 7);
-    // console.log(`✅ Percentage of corners greater than 7  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 8);
-    // console.log(`✅ Percentage of corners greater than 8  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 9);
-    // console.log(`✅ Percentage of corners greater than 9  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 10);
-    // console.log(`✅ Percentage of corners greater than 10 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 11);
-    // console.log(`✅ Percentage of corners greater than 11 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 12);
-    // console.log(`✅ Percentage of corners greater than 12 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 13);
-    // console.log(`✅ Percentage of corners greater than 13 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 14);
-    // console.log(`✅ Percentage of corners greater than 14 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 15);
-    // console.log(`✅ Percentage of corners greater than 15 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 16);
-    // console.log(`✅ Percentage of corners greater than 16 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 17);
-    // console.log(`✅ Percentage of corners greater than 17 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 18);
-    // console.log(`✅ Percentage of corners greater than 18 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 19);
-    // console.log(`✅ Percentage of corners greater than 19 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCorners, 20);
-    // console.log(`✅ Percentage of corners greater than 20 : ${result}%`);
-
-    // calculatePercentage(vecTotalCorners, '>', '✅ Percentage of total corners greater than');
-
-    // console.log('                                               ');
-    // console.log('-----------------------------------------------');
-    // console.log(`TEAM ANALYZE : ${teamAnalyze} - LAST ${nGamesAnalyze} GAMES`);
-    // console.log('✅ Calculate Corner Percentage Less Than .... :');
-    // console.log('                                               ');
-
-
-    // calculatePercentage(vecTotalCorners, '<', '✅ Percentage of total corners less than')
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 1);
-    // console.log(`✅ Percentage of corners less than 1  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 2);
-    // console.log(`✅ Percentage of corners less than 2  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 3);
-    // console.log(`✅ Percentage of corners less than 3  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 4);
-    // console.log(`✅ Percentage of corners less than 4  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 5);
-    // console.log(`✅ Percentage of corners less than 5  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 6);
-    // console.log(`✅ Percentage of corners less than 6  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 7);
-    // console.log(`✅ Percentage of corners less than 7  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 8);
-    // console.log(`✅ Percentage of corners less than 8  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 9);
-    // console.log(`✅ Percentage of corners less than 9  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 10);
-    // console.log(`✅ Percentage of corners less than 10 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 11);
-    // console.log(`✅ Percentage of corners less than 11 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 12);
-    // console.log(`✅ Percentage of corners less than 12 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 13);
-    // console.log(`✅ Percentage of corners less than 13 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 14);
-    // console.log(`✅ Percentage of corners less than 14 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 15);
-    // console.log(`✅ Percentage of corners less than 15 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 16);
-    // console.log(`✅ Percentage of corners less than 16 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 17);
-    // console.log(`✅ Percentage of corners less than 17 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 18);
-    // console.log(`✅ Percentage of corners less than 18 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 19);
-    // console.log(`✅ Percentage of corners less than 19 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 20);
-    // console.log(`✅ Percentage of corners less than 20 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 21);
-    // console.log(`✅ Percentage of corners less than 21 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalCorners, 22);
-    // console.log(`✅ Percentage of corners less than 22 : ${result}%`);
-
-
-
-
-
-
-
-
-    // console.log('                                                  ');
-    // console.log('--------------------------------------------------');
-    // console.log(`TEAM ANALYZE : ${teamAnalyze} - LAST ${nGamesAnalyze} GAMES`);
-    // console.log('✅ Calculate Corner Favor Percentage Greater Than .... :');
-    // console.log('                                                  ');
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 0);
-    // console.log(`✅ Percentage of corners favor greater than 0  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 1);
-    // console.log(`✅ Percentage of corners favor greater than 1  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 2);
-    // console.log(`✅ Percentage of corners favor greater than 2  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 3);
-    // console.log(`✅ Percentage of corners favor greater than 3  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 4);
-    // console.log(`✅ Percentage of corners favor greater than 4  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 5);
-    // console.log(`✅ Percentage of corners favor greater than 5  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 6);
-    // console.log(`✅ Percentage of corners favor greater than 6  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 7);
-    // console.log(`✅ Percentage of corners favor greater than 7  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 8);
-    // console.log(`✅ Percentage of corners favor greater than 8  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 9);
-    // console.log(`✅ Percentage of corners favor greater than 9  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 10);
-    // console.log(`✅ Percentage of corners favor greater than 10 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 11);
-    // console.log(`✅ Percentage of corners favor greater than 11 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 12);
-    // console.log(`✅ Percentage of corners favor greater than 12 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 13);
-    // console.log(`✅ Percentage of corners favor greater than 13 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 14);
-    // console.log(`✅ Percentage of corners favor greater than 14 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 15);
-    // console.log(`✅ Percentage of corners favor greater than 15 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 16);
-    // console.log(`✅ Percentage of corners favor greater than 16 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 17);
-    // console.log(`✅ Percentage of corners favor greater than 17 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 18);
-    // console.log(`✅ Percentage of corners favor greater than 18 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 19);
-    // console.log(`✅ Percentage of corners favor greater than 19 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersFavor, 20);
-    // console.log(`✅ Percentage of corners favor greater than 20 : ${result}%`);
-
-    calculatePercentage(vecTotalCorners, '>', '✅ Percentage of total corners greater than');
-    calculatePercentage(vecTotalCorners, '<', '✅ Percentage of total corners less than')
-
-    calculatePercentage(vecTotalCornersFavor, '>', '✅ Percentage of corners favor greater than');
-    calculatePercentage(vecTotalCornersFavor, '<', '✅ Percentage of corners favor less than');
-
-    calculatePercentage(vecTotalCornersAgainst, '>', '✅ Percentage of corners against greater than');
-    calculatePercentage(vecTotalCornersAgainst, '<', '✅ Percentage of corners against less than')
 
     //------------------------------------------------------------------------------
 
@@ -1518,251 +1291,56 @@ function filterTeam(data, name, category, country) {
 
 
     //-------------------------------------------------------------------------------
-    calculatePercentage(vecTotalGoals, '>', '✅ Percentage of total goals greater than');
-    calculatePercentage(vecTotalGoals, '<', '✅ Percentage of total goals less than')
 
-    calculatePercentage(vecTotalGoalsFavor, '>', '✅ Percentage of goals favor greater than');
-    calculatePercentage(vecTotalGoalsFavor, '<', '✅ Percentage of goals favor less than');
+    var vecMajorTotalGoals = [];
+    var vecMinorTotalGoals = [];
+    var vecMajorTotalGoalsFavor = [];
+    var vecMinorTotalGoalsFavor = [];
+    var vecMajorTotalGoalsAgainst = [];
+    var vecMinorTotalGoalsAgainst = [];
 
-    calculatePercentage(vecTotalGoalsAgainst, '>', '✅ Percentage of goals against greater than');
-    calculatePercentage(vecTotalGoalsAgainst, '<', '✅ Percentage of goals against less than')
+    vecMajorTotalGoals = calculatePercentage(vecTotalGoals, '>', '✅ Percentage of total goals greater than');
+    vecMinorTotalGoals = calculatePercentage(vecTotalGoals, '<', '✅ Percentage of total goals less than')
 
-    // console.log('                                                  ');
-    // console.log('--------------------------------------------------');
-    // console.log(`TEAM ANALYZE : ${teamAnalyze} - LAST ${nGamesAnalyze} GAMES`);
-    // console.log('✅ Calculate Goals Percentage Greater Than .... :');
-    // console.log('                                                  ');
+    vecMajorTotalGoalsFavor = calculatePercentage(vecTotalGoalsFavor, '>', '✅ Percentage of goals favor greater than');
+    vecMinorTotalGoalsFavor = calculatePercentage(vecTotalGoalsFavor, '<', '✅ Percentage of goals favor less than');
 
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 0);
-    // console.log(`✅ Percentage of goals greater than 0  : ${result}%`);
+    vecMajorTotalGoalsAgainst = calculatePercentage(vecTotalGoalsAgainst, '>', '✅ Percentage of goals against greater than');
+    vecMinorTotalGoalsAgainst = calculatePercentage(vecTotalGoalsAgainst, '<', '✅ Percentage of goals against less than')
 
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 1);
-    // console.log(`✅ Percentage of goals greater than 1  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 2);
-    // console.log(`✅ Percentage of goals greater than 2  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 3);
-    // console.log(`✅ Percentage of goals greater than 3  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 4);
-    // console.log(`✅ Percentage of goals greater than 4  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 5);
-    // console.log(`✅ Percentage of goals greater than 5  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 6);
-    // console.log(`✅ Percentage of goals greater than 6  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 7);
-    // console.log(`✅ Percentage of goals greater than 7  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 8);
-    // console.log(`✅ Percentage of goals greater than 8  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 9);
-    // console.log(`✅ Percentage of goals greater than 9  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 10);
-    // console.log(`✅ Percentage of goals greater than 10 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 11);
-    // console.log(`✅ Percentage of goals greater than 11 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 12);
-    // console.log(`✅ Percentage of goals greater than 12 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 13);
-    // console.log(`✅ Percentage of goals greater than 13 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 14);
-    // console.log(`✅ Percentage of goals greater than 14 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 15);
-    // console.log(`✅ Percentage of goals greater than 15 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 16);
-    // console.log(`✅ Percentage of goals greater than 16 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 17);
-    // console.log(`✅ Percentage of goals greater than 17 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 18);
-    // console.log(`✅ Percentage of goals greater than 18 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 19);
-    // console.log(`✅ Percentage of goals greater than 19 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalGoals, 20);
-    // console.log(`✅ Percentage of goals greater than 20 : ${result}%`);
-
-
+    console.log(`vecMajorTotalGoals = ${vecMajorTotalGoals}`);
+    console.log(`vecMinorTotalGoals = ${vecMinorTotalGoals}`);
+    console.log(`vecMajorTotalGoalsFavor = ${vecMajorTotalGoalsFavor}`);
+    console.log(`vecMinorTotalGoalsFavor = ${vecMinorTotalGoalsFavor}`);
+    console.log(`vecMajorTotalGoalsAgainst = ${vecMajorTotalGoalsAgainst}`);
+    console.log(`vecMinorTotalGoalsAgainst = ${vecMinorTotalGoalsAgainst}`);
 
     //------------------------------------------------------------------------------
 
-    calculatePercentage(vecTotalShotsTarget, '>', '✅ Percentage of total shots on target greater than');
-    calculatePercentage(vecTotalShotsTarget, '<', '✅ Percentage of total shots on target less than');
+    var vecMajorTotalShotsTarget = [];
+    var vecMinorTotalShotsTarget = [];
+    var vecMajorShotsTargetFavor = [];
+    var vecMinorShotsTargetFavor = [];
+    var vecMajorShotsTargetAgainst = [];
+    var vecMinorShotsTargetAgainst = [];
 
-    calculatePercentage(vecShotsTargetFavor, '>', '✅ Percentage of total shots favor on target greater than');
-    calculatePercentage(vecShotsTargetFavor, '<', '✅ Percentage of total shots favor on target less than');
+    vecMajorTotalShotsTarget = calculatePercentage(vecTotalShotsTarget, '>', '✅ Percentage of total shots on target greater than');
+    vecMinorTotalShotsTarget = calculatePercentage(vecTotalShotsTarget, '<', '✅ Percentage of total shots on target less than');
 
-    calculatePercentage(vecShotsTargetAgainst, '>', '✅ Percentage of total shots against on target greater than');
-    calculatePercentage(vecShotsTargetAgainst, '<', '✅ Percentage of total shots against on target less than');
+    vecMajorShotsTargetFavor = calculatePercentage(vecShotsTargetFavor, '>', '✅ Percentage of total shots favor on target greater than');
+    vecMinorShotsTargetFavor = calculatePercentage(vecShotsTargetFavor, '<', '✅ Percentage of total shots favor on target less than');
 
-
-    // console.log(`vecShotsTargetFavor   = ${vecShotsTargetFavor}`);
-    // console.log(`vecShotsTargetAgainst = ${vecShotsTargetAgainst}`);
-    // console.log(`vecTotalShotsTarget   = ${vecTotalShotsTarget}`);
-
-    // calculatePercentage(vecTotalGoalsFavor, '>', '✅ Percentage of goals favor greater than');
-    // calculatePercentage(vecTotalGoalsFavor, '<', '✅ Percentage of goals favor less than');
-
-    // calculatePercentage(vecTotalGoalsAgainst, '>', '✅ Percentage of goals against greater than');
-    // calculatePercentage(vecTotalGoalsAgainst, '<', '✅ Percentage of goals against less than')
-
-    // console.log('                                                  ');
-    // console.log('--------------------------------------------------');
-    // console.log(`TEAM ANALYZE : ${teamAnalyze} - LAST ${nGamesAnalyze} GAMES`);
-    // console.log('✅ Calculate Corner Against Percentage Greater Than .... :');
-    // console.log('                                                  ');
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 0);
-    // console.log(`✅ Percentage of corners against greater than 0  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 1);
-    // console.log(`✅ Percentage of corners against greater than 1  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 2);
-    // console.log(`✅ Percentage of corners against greater than 2  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 3);
-    // console.log(`✅ Percentage of corners against greater than 3  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 4);
-    // console.log(`✅ Percentage of corners against greater than 4  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 5);
-    // console.log(`✅ Percentage of corners against greater than 5  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 6);
-    // console.log(`✅ Percentage of corners against greater than 6  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 7);
-    // console.log(`✅ Percentage of corners against greater than 7  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 8);
-    // console.log(`✅ Percentage of corners against greater than 8  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 9);
-    // console.log(`✅ Percentage of corners against greater than 9  : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 10);
-    // console.log(`✅ Percentage of corners against greater than 10 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 11);
-    // console.log(`✅ Percentage of corners against greater than 11 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 12);
-    // console.log(`✅ Percentage of corners against greater than 12 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 13);
-    // console.log(`✅ Percentage of corners against greater than 13 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 14);
-    // console.log(`✅ Percentage of corners against greater than 14 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 15);
-    // console.log(`✅ Percentage of corners against greater than 15 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 16);
-    // console.log(`✅ Percentage of corners against greater than 16 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 17);
-    // console.log(`✅ Percentage of corners against greater than 17 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 18);
-    // console.log(`✅ Percentage of corners against greater than 18 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 19);
-    // console.log(`✅ Percentage of corners against greater than 19 : ${result}%`);
-
-    // var result = calculatePercentageGreaterThan(vecTotalCornersAgainst, 20);
-    // console.log(`✅ Percentage of corners against greater than 20 : ${result}%`);
+    vecMajorShotsTargetAgainst = calculatePercentage(vecShotsTargetAgainst, '>', '✅ Percentage of total shots against on target greater than');
+    vecMajorTotalGoals = calculatePercentage(vecShotsTargetAgainst, '<', '✅ Percentage of total shots against on target less than');
 
 
+    console.log(`vecMajorTotalShotsTarget = ${vecMajorTotalShotsTarget}`);
+    console.log(`vecMinorTotalShotsTarget = ${vecMinorTotalShotsTarget}`);
+    console.log(`vecMajorShotsTargetFavor = ${vecMajorShotsTargetFavor}`);
+    console.log(`vecMinorShotsTargetFavor = ${vecMinorShotsTargetFavor}`);
+    console.log(`vecMajorShotsTargetAgainst = ${vecMajorShotsTargetAgainst}`);
+    console.log(`vecMinorShotsTargetAgainst = ${vecMinorShotsTargetAgainst}`);
 
-
-    // console.log('                                               ');
-    // console.log('-----------------------------------------------');
-    // console.log(`TEAM ANALYZE : ${teamAnalyze} - LAST ${nGamesAnalyze} GAMES`);
-    // console.log('✅ Calculate Goals Percentage Less Than .... :');
-    // console.log('                                               ');
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 1);
-    // console.log(`✅ Percentage of goals less than 1  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 2);
-    // console.log(`✅ Percentage of goals less than 2  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 3);
-    // console.log(`✅ Percentage of goals less than 3  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 4);
-    // console.log(`✅ Percentage of goals less than 4  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 5);
-    // console.log(`✅ Percentage of goals less than 5  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 6);
-    // console.log(`✅ Percentage of goals less than 6  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 7);
-    // console.log(`✅ Percentage of goals less than 7  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 8);
-    // console.log(`✅ Percentage of goals less than 8  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 9);
-    // console.log(`✅ Percentage of goals less than 9  : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 10);
-    // console.log(`✅ Percentage of goals less than 10 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 11);
-    // console.log(`✅ Percentage of goals less than 11 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 12);
-    // console.log(`✅ Percentage of goals less than 12 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 13);
-    // console.log(`✅ Percentage of goals less than 13 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 14);
-    // console.log(`✅ Percentage of goals less than 14 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 15);
-    // console.log(`✅ Percentage of goals less than 15 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 16);
-    // console.log(`✅ Percentage of goals less than 16 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 17);
-    // console.log(`✅ Percentage of goals less than 17 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 18);
-    // console.log(`✅ Percentage of goals less than 18 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 19);
-    // console.log(`✅ Percentage of goals less than 19 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 20);
-    // console.log(`✅ Percentage of goals less than 20 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 21);
-    // console.log(`✅ Percentage of goals less than 21 : ${result}%`);
-
-    // var result = calculatePercentageLessThan(vecTotalGoals, 22);
-    // console.log(`✅ Percentage of goals less than 22 : ${result}%`);
 
 
 
@@ -2040,7 +1618,7 @@ function filterTeam(data, name, category, country) {
     //----------------------------------------------------------------------------------
 
     var vec15mAllGoals = [];
-    
+
     console.log('                                                     ');
     console.log('-----------------------------------------------------');
     console.log(`TEAM ANALYZE : ${teamAnalyze} - LAST ${nGamesAnalyze} GAMES`);
@@ -2439,7 +2017,7 @@ function filterTeam(data, name, category, country) {
     // Create an object to hold all vectors
     const data = {
         country,
-        dateLastGame:vecTime[0],
+        dateLastGame: vecTime[0],
         teamAnalyze,
         nGamesAnalyze,
         nFailedAnalyses,
@@ -2459,6 +2037,24 @@ function filterTeam(data, name, category, country) {
         vecShotsTargetAgainst,
         vecTotalShotsTarget,
         vec15mAllGoals,
+        vecMajorTotalCorners,
+        vecMajorTotalCornersFavor,
+        vecMajorTotalCornersAgainst,
+        vecMinorTotalCornersFavor,
+        vecMinorTotalCornersAgainst,
+        vecMinorTotalCorners,
+        vecMajorTotalGoalsFavor,
+        vecMajorTotalGoalsAgainst,
+        vecMajorTotalGoals,
+        vecMinorTotalGoalsFavor,
+        vecMinorTotalGoalsAgainst,
+        vecMinorTotalGoals,
+        vecMajorShotsTargetFavor,
+        vecMajorTotalShotsTarget,
+        vecMajorShotsTargetAgainst,
+        vecMinorShotsTargetFavor,
+        vecMinorTotalShotsTarget,
+        vecMinorShotsTargetAgainst,
         mediaCornersFavor,
         mediaCornersAgainst,
         mediaCorners,
@@ -2485,15 +2081,6 @@ function filterTeam(data, name, category, country) {
         }
     });
 
-
-    // // Write to JSON file
-    // fs.writeFile('public/cornerData.json', JSON.stringify(data, null, 2), (err) => {
-    //     if (err) {
-    //         console.error('Error writing file:', err);
-    //     } else {
-    //         console.log('Data successfully written to cornerData.json');
-    //     }
-    // });
 
 
 

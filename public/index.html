@@ -172,6 +172,7 @@
             <option value="brazil">Brazil</option>
             <option value="brazil_carioca">Brazil Carioca</option>
             <option value="brazil_paulista">Brazil Paulista</option>
+            <option value="brazil_mineiro">Brazil Mineiro</option>
             <option value="canada">Canada</option>
             <option value="chile">Chile</option>
             <option value="colombia">Colombia</option>
@@ -184,6 +185,7 @@
             <option value="france">France</option>
             <option value="france_2">France 2</option>
             <option value="germany">Germany</option>
+            <option value="germany_2_bundesliga">Germany 2. Bundesliga</option>
             <option value="greece">Greece</option>
             <option value="guatemala">Guatemala</option>
             <option value="honduras">Honduras</option>
@@ -353,9 +355,16 @@
             <p>Teams analyzed : <span id="teams-analyzed" class="highlight_blue"></span></p>
             <p>Games Analyzed : <span id="number-games-analyzed" class="highlight_blue"></span></p>
             <p>Failed analyses : <span id="failed-analyses" class="highlight_blue"></span></p>
+
             <p>Media Corners Favor : <span id="media-corners-favor" class="highlight_blue"></span></p>
             <p>Media Corners Against : <span id="media-corners-against" class="highlight_blue"></span></p>
             <p>Media Corners : <span id="media-corners" class="highlight_blue"></span></p>
+
+            <!--p>Percentage Corners Favor : <span id="percentage-corners-favor-home" class="highlight_blue"></span></p-->
+            <p>
+                <span id="percentage-corners-favor-label-home">Percentage Corners Favor :</span>
+                <span id="percentage-corners-favor-home" class="highlight_blue"></span>
+            </p>
 
             <p>Media Goals Favor : <span id="media-goals-favor" class="highlight_blue"></span></p>
             <p>Media Goals Against : <span id="media-goals-against" class="highlight_blue"></span></p>
@@ -371,6 +380,50 @@
             <p>Media Total Shots Target : <span id="media-total-shots-target" class="highlight_blue"></span></p>
             <p>15m All Goals : <span id="15m-all-goals" class="highlight_blue"></span></p>
             <button onclick="teamHome()" class="custom-button">Team Home : </button>
+
+            <select id="percentages_cases_home">
+                <option value="goals">Goals</option>
+                <option value="corners">Corners</option>
+                <option value="shoots_on_arget">Shoots on target</option>
+            </select>
+
+            <select id="percentages_compare_home">
+                <option value="minor">&lt;</option>
+                <option value="major">&gt;</option>
+            </select>
+
+            <select id="percentages_value_home">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+            </select>
         </div>
 
         <!-- First bold vertical divider -->
@@ -440,19 +493,16 @@
         Command Preview: <span id="command-preview">No command to display</span>
     </div>
 
-    <!-- <button id="run-command-btn" onclick="runSelectedCommand()" disabled>Run Command with Selected Values</button>
-
-    <button id="run-all-teams-btn" onclick="runAllTeams()">Run All Teams from Selected Values</button>
-
-    <button id="corners-btn" onclick="mostrarIframe()">Corners</button> -->
 
     <div class="button-row">
         <button id="run-command-btn" onclick="runSelectedCommand()" disabled>Run Command</button>
         <button id="run-all-teams-btn" onclick="runAllTeams()">Run All Teams</button>
         <button id="corners-btn" onclick="mostrarIframe()">Corners</button>
-        <button id="handicap-btn" onclick="runHandicap()">Handicap</button>
+    </div>
 
-        <!-- <button onclick="newRightButton()" class="custom-button">New Right Button</button> -->
+    <div class="button-row">
+        <button id="handicap-btn" onclick="runHandicap()">Handicap</button>
+        <button id="home-away-140-170-btn" onclick="runHomeAway_140_170()">Home Away [1.40 - 1.70]</button>
     </div>
 
     <div id="output">Output will appear here...</div>
@@ -477,8 +527,9 @@
             austria: ["Salzburg", "SK Rapid", "Hartberg", "LASK", "Sturm Graz", "Austria Vienna", "Wolfsberger AC", "Altach", "Ried", "Tirol", "Grazer AK", "BW Linz"],
             belgium: ["Royale Union SG", "Club Brugge KV", "Anderlecht", "St. Truiden", "Gent", "KV Mechelen", "Genk", "Waregem", "Charleroi", "St. Liege", "RAAL La Louviere", "Westerlo", "Leuven", "Antwerp", "Cercle Brugge KSV", "Dender"],
             brazil: ["Flamengo RJ", "Palmeiras", "Cruzeiro", "Mirassol", "Bahia", "Botafogo RJ", "Fluminense", "Bragantino", "Sao Paulo", "Atletico-MG", "Vasco", "Ceara", "Corinthians", "Gremio", "Internacional", "Santos", "Vitoria", "Juventude", "Fortaleza", "Sport Recife"],
-            brazil_carioca: ["Volta Redonda","Vasco","Fluminense","Bangu","Portuguesa RJ","Sampaio Correa FE","Nova Iguacu","Botafogo RJ","Madureira","Boavista","Flamengo RJ","Marica"],
+            brazil_carioca: ["Volta Redonda", "Vasco", "Fluminense", "Bangu", "Portuguesa RJ", "Sampaio Correa FE", "Nova Iguacu", "Botafogo RJ", "Madureira", "Boavista", "Flamengo RJ", "Marica"],
             brazil_paulista: ["Bragantino", "Novorizontino", "Palmeiras", "Capivariano", "Primavera", "Velo Clube", "Sao Bernardo", "Mirassol", "Corinthians", "Santos", "Portuguesa", "Sao Paulo", "Botafogo SP", "Noroeste", "Guarani", "Ponte Preta"],
+            brazil_mineiro: ["URT", "Democrata GV", "Atletico-MG", "Uberlandia", "America MG", "Pouso Alegre", "Betim", "Tombense", "Cruzeiro", "North Esporte Clube", "Itabirito", "Athletic Club", "Pouso Alegre", "Democrata GV", "North Esporte Clube"],
             canada: ["Vancouver Whitecaps"],
             chile: ["U. De Concepcion", "Copiapo", "Cobreloa", "San Marcos de Arica", "Antofagasta", "D. Concepcion", "Rangers", "S. Wanderers", "San Luis", "Magallanes", "Recoleta", "Deportes Temuco", "Curico Unido", "CD Santa Cruz", "San Felipe", "S. Morning"],
             colombia: ["Deportes Tolima", "Ind. Medellin", "Atl. Nacional", "Santa Fe", "America De Cali", "Junior", "Bucaramanga", "Millonarios", "Once Caldas", "Alianza", "Fortaleza", "Aguilas", "Dep. Pasto", "Pereira", "Dep. Cali", "Llaneros", "Envigado", "Chico", "U. Magdalena", "La Equidad"],
@@ -491,6 +542,7 @@
             france: ["PSG", "Marseille", "Lens", "Strasbourg", "Rennes", "Lille", "Lyon", "Monaco", "Nice", "Toulouse", "Paris FC", "Le Havre", "Angers", "Metz", "Brest", "Nantes", "Lorient", "Auxerre"],
             france_2: ["Troyes", "St Etienne", "Red Star", "Le Mans", "Pau FC", "Reims", "Dunkerque", "Montpellier", "Guingamp", "Annecy", "Grenoble", "Clermont", "Rodez", "Boulogne", "Laval", "Amiens", "Nancy", "Bastia"],
             germany: ["Bayern Munich", "Bayer Leverkusen", "Dortmund", "RB Leipzig", "Stuttgart", "Eintracht Frankfurt", "Hoffenheim", "Werder Bremen", "FC Koln", "Freiburg", "B. Monchengladbach", "Union Berlin", "Augsburg", "Hamburger SV", "Wolfsburg", "St. Pauli", "Mainz", "Heidenheim"],
+            germany_2_bundesliga: ["Schalke", "Darmstadt", "Elversberg", "Paderborn", "Hannover", "Kaiserslautern", "Hertha Berlin", "Karlsruher SC", "Nurnberg", "Holstein Kiel", "Bochum", "Preussen Munster", "Braunschweig", "Arminia Bielefeld", "Magdeburg", "Dusseldorf", "SG Dynamo Dresden", "Greuther Furth"],
             greece: ["Olympiacos Piraeus", "PAOK", "AEK Athens", "Levadiakos", "Volos", "Panathinaikos", "Aris", "Kifisia", "Panetolikos", "Atromitos", "OFI Crete", "Asteras Tripolis", "AEL Larissa", "Panserraikos"],
             guatemala: ["Municipal", "Deportivo Mixco", "Antigua", "Aurora F.C.", "Malacateco", "Xelaju", "Deportivo Achuapa", "Mictlan", "Coban Imperial", "Marquense", "Guastatoya", "Comunicaciones"],
             honduras: ["Marathon", "Olimpia", "Motagua", "Platense", "Real Espana", "UPNFM", "Olancho", "Juticalpa", "Genesis", "Victoria", "Choloma"],
@@ -553,6 +605,11 @@
         const labelMediaCornersFavor = document.getElementById('media-corners-favor');
         const labelMediaCornersAgainst = document.getElementById('media-corners-against');
         const labelMediaCorners = document.getElementById('media-corners');
+
+        const labelPercentageCornersFavorHome = document.getElementById('percentage-corners-favor-home');
+        //const labelpercentageorners-favor-label-home = document.getElementById('percentage-corners-favor-label-home');
+        
+
         const labelMediaGoalsFavor = document.getElementById('media-goals-favor');
         const labelMediaGoalsAgainst = document.getElementById('media-goals-against');
         const labelMediaGoals = document.getElementById('media-goals');
@@ -563,6 +620,12 @@
         const labelMediaTotalShotsTargetAgainst = document.getElementById('media-total-shots-target-against');
         const labelMediaTotalShotsTarget = document.getElementById('media-total-shots-target');
         const label15mAllGoals = document.getElementById('15m-all-goals');
+
+        const selectStrategyHome = document.getElementById('percentages_cases_home');
+        const selectCompareHome = document.getElementById('percentages_compare_home');
+        const selectValueHome = document.getElementById('percentages_value_home');
+
+
 
 
         const labelCountryAway = document.getElementById('country-away');
@@ -709,6 +772,21 @@
         }
 
 
+        function getPercentageStrategy(data) {
+
+            var strategy = selectStrategyHome.options[selectStrategyHome.selectedIndex].text
+            labelPercentageCornersFavorHome.innerHTML = strategy
+
+            var compare = selectCompareHome.options[selectCompareHome.selectedIndex].text
+            labelPercentageCornersFavorHome.innerHTML = compare
+
+            var valueIndex = selectValueHome.options[selectValueHome.selectedIndex].text
+            labelPercentageCornersFavorHome.innerHTML = data.vecMajorTotalGoalsFavor[valueIndex];
+
+            return valueIndex;
+        }
+
+
         async function runHandicap() {
 
             // Construct the command with selected values
@@ -717,6 +795,17 @@
             // Call the existing runCommand function
             await runCommand(command);
         }
+
+        async function runHomeAway_140_170() {
+
+            // Construct the command with selected values
+            const command = `node home_away_140_170.js`;
+
+            // Call the existing runCommand function
+            await runCommand(command);
+        }
+
+
 
         // Function to run command with selected values
         async function runSelectedCommand() {
@@ -809,9 +898,13 @@
                 labelTeamsAnalyzed.textContent = null;
                 labelGamesAnalyzed.textContent = null;
                 labelFailedAnalyses.textContent = null;
+
                 labelMediaCornersFavor.textContent = null;
                 labelMediaCornersAgainst.textContent = null;
                 labelMediaCorners.textContent = null;
+
+                labelPercentageCornersFavorHome.textContent = null;
+
                 labelMediaGoalsFavor.textContent = null;
                 labelMediaGoalsAgainst.textContent = null;
                 labelMediaGoals.textContent = null;
@@ -863,6 +956,32 @@
                 labelMediaCornersFavor.textContent = data.mediaCornersFavor
                 labelMediaCornersAgainst.textContent = data.mediaCornersAgainst
                 labelMediaCorners.textContent = data.mediaCorners
+                labelPercentageCornersFavorHome.textContent = data.vecMajorTotalCornersFavor[1];
+
+                // labelPercentageCornersFavorHome.innerHTML = "Corners PEEVVVVVV";
+                document.getElementById('percentage-corners-favor-label').textContent =
+                    'Percentage Goals Favor xxxxxxxxx:';
+
+
+                // var strategy = selectStrategyHome.options[selectStrategyHome.selectedIndex].text
+                // labelPercentageCornersFavorHome.innerHTML = strategy
+
+                // var compare = selectCompareHome.options[selectCompareHome.selectedIndex].text
+                // labelPercentageCornersFavorHome.innerHTML = compare
+
+                // var valueIndex = selectValueHome.options[selectValueHome.selectedIndex].text
+                // labelPercentageCornersFavorHome.innerHTML = data.vecMajorTotalGoalsFavor[valueIndex];
+
+                var valueIndex = getPercentageStrategy(data)
+                // labelPercentageCornersFavorHome.innerHTML = data.vecMajorTotalGoalsFavor[valueIndex];
+
+                //                 const selectCompareHome  = document.getElementById('percentages_compare_home');
+                // const selectValueHome  = document.getElementById('percentages_value_home');
+
+
+
+
+
                 labelMediaGoalsFavor.textContent = data.mediaGoalsFavor;
                 labelMediaGoalsAgainst.textContent = data.mediaGoalsAgainst;
                 labelMediaGoals.textContent = data.mediaGoals;
